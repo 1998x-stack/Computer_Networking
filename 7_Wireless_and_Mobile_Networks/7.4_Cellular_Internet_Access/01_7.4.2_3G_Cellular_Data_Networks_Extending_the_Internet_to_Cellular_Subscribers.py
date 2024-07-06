@@ -1,0 +1,7 @@
+# 01_7.4.2_3G_Cellular_Data_Networks_Extending_the_Internet_to_Cellular_Subscribers
+
+"""
+Lecture: 7_Wireless_and_Mobile_Networks/7.4_Cellular_Internet_Access
+Content: 01_7.4.2_3G_Cellular_Data_Networks_Extending_the_Internet_to_Cellular_Subscribers
+"""
+
