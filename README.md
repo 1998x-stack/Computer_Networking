@@ -1,6 +1,32 @@
-# Computer Network
+# Computer Networking: A Top-Down Approach
 
-这是一个关于Computer Network的目录结构。
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+> A chapter-by-chapter companion to *Computer Networking: A Top-Down Approach* (Kurose &
+> Ross) — organized notes and runnable scripts across all 9 parts.
+> —— 《计算机网络:自顶向下方法》逐章笔记 + 可运行代码,共 9 大部分。
+
+## 🚀 Quick Start
+
+```bash
+python3 "1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet/00_1.1.1_A_Nuts-and-Bolts_Description.py"
+```
+每个 `.py` 独立可运行 (self-contained)。Each `.py` is a self-contained, runnable script.
+
+## ✅ Quality Bar
+
+- 每章每节配一对 `摘要(.md)` + `代码(.py)`, 覆盖全书 9 章(应用层/传输层/网络层/链路层/无线/安全/多媒体)。
+- 演示均为轻量脚本, headless 运行。
+
+## 🔬 Verified Demo Evidence
+
+> 冒烟样例; 全部 213 个 `.py` 可复现执行, 无异常。 (All 213 demo scripts run headless
+> without error; a representative run verified.)
+
+---
+
+# 目录 (Contents)
 
 # 1_Computer_Networks_and_the_Internet
 
