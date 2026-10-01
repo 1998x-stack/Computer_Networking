@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.4.2 Queuing Delay and Packet Loss</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>01_1.4.2_Queuing_Delay_and_Packet_Loss</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 01_1.4.2_Queuing_Delay_and_Packet_Loss
+</code></pre>
+<h3>01_1.4.2_Queuing_Delay_and_Packet_Loss</h3>
+<h4>排队延迟和分组丢失概述</h4>
+<p>在分组交换网络中，节点延迟（nodal delay）是指数据包从一个节点（如路由器或主机）传输到下一个节点过程中所经历的各种延迟。节点延迟主要由处理延迟、排队延迟、传输延迟和传播延迟四部分组成。其中，排队延迟（queuing delay）是最复杂和最有趣的一部分，在计算机网络中占有重要地位。成千上万的论文和众多书籍专门探讨了排队延迟。</p>
+<h4>排队延迟的定义和性质</h4>
+<p>排队延迟是指数据包在路由器的队列中等待传输的时间。与处理延迟、传输延迟和传播延迟不同，排队延迟可以随每个数据包而变化。例如，当10个数据包同时到达一个空队列时，第一个数据包无需等待即可传输，而最后一个数据包需要等待前面9个数据包传输完毕。因此，排队延迟通常使用统计指标来描述，如平均排队延迟、排队延迟的方差以及排队延迟超过某一指定值的概率。</p>
+<p>排队延迟的大小取决于流量到达队列的速率、链路的传输速率以及到达流量的性质（即流量是周期性到达还是突发性到达）。假设平均到达速率为$a$（单位：数据包/秒），链路的传输速率为$R$（单位：比特/秒），每个数据包的长度为$L$（单位：比特），则比特到达队列的平均速率为$aL$比特/秒。假设队列容量非常大，可以容纳无限数量的比特，则流量强度（traffic intensity）为$aL/R$。流量强度在估算排队延迟时起到重要作用。</p>
+<h4>流量强度与排队延迟</h4>
+<ul>
+<li>当$aL/R \leq 1$时，流量强度较小，数据包到达间隔较大，排队延迟较小。</li>
+<li>当$aL/R &gt; 1$时，平均到达速率超过了链路的传输能力，队列将不断增加，排队延迟趋向于无穷大。因此，网络设计时的黄金法则之一是确保流量强度不超过1。</li>
+</ul>
+<p>在实际应用中，流量通常是随机到达的，即到达不遵循任何固定模式，数据包之间的时间间隔是随机的。在这种情况下，仅使用流量强度不足以全面描述排队延迟的统计特性。但即便如此，理解流量强度对于直观理解排队延迟的程度非常有用。</p>
+<h4>排队延迟的影响因素</h4>
+<ul>
+<li><strong>平均到达速率</strong>：当流量强度接近0时，数据包到达的间隔较大，排队延迟接近于0；当流量强度接近1时，数据包到达速率超过传输速率，排队延迟显著增加。</li>
+<li><strong>队列长度和容量</strong>：实际网络中的队列容量是有限的，当队列已满时，新到达的数据包将被丢弃。这种情况下，分组丢失成为评价节点性能的重要指标。</li>
+</ul>
+<h4>分组丢失</h4>
+<p>由于队列容量有限，当队列已满且没有空位时，新到达的数据包将被丢弃，即发生分组丢失。分组丢失率随着流量强度的增加而增加。在实际网络中，为了确保数据包最终从源传输到目的地，可能需要在端到端基础上重传丢失的数据包。</p>
+<h4>小结</h4>
+<p>排队延迟和分组丢失是分组交换网络中节点延迟的重要组成部分。理解排队延迟的性质、影响因素以及其与流量强度的关系，对于优化网络性能、提升用户体验具有重要意义。通过统计分析和网络设计，可以有效管理和减少排队延迟和分组丢失。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 01_1.4.2_Queuing_Delay_and_Packet_Loss
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 01_1.4.2_Queuing_Delay_and_Packet_Loss
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

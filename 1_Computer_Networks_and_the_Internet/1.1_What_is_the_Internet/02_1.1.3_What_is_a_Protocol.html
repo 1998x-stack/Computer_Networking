@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.1.3 What is a Protocol</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>02_1.1.3_What_is_a_Protocol</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 02_1.1.3_What_is_a_Protocol
+</code></pre>
+<h3>02_1.1.3_What_is_a_Protocol</h3>
+<h4>协议的定义</h4>
+<p>在计算机网络中，协议是指一组用于通信的规则和标准。协议定义了通信双方需要遵循的消息格式、传输顺序和如何处理错误等方面的细节。可以把协议比作人类交流中的礼仪和规范，例如问候、提问和回应等。</p>
+<h4>人类交流的类比</h4>
+<p>为了更好地理解计算机网络协议，可以通过类比人类交流来说明。假设你想问别人时间，那么通常的对话流程可能如下：</p>
+<ol>
+<li>你首先说“你好”来开始交流。</li>
+<li>对方回应“你好”，表示可以继续交流。</li>
+<li>你问“现在几点了？”。</li>
+<li>对方给出时间，交流完成。</li>
+</ol>
+<p>这个简单的对话流程展示了一个基本的人类协议：问候、确认、提问和回答。如果对方不回应或给出不同的回应（如“不好意思，我不想被打扰”），则表示交流无法继续。在这种情况下，人类协议就会指示不再提问时间。同样，计算机网络中的协议也定义了具体的消息和响应动作，以确保通信的顺利进行。</p>
+<h4>网络协议的作用</h4>
+<p>在计算机网络中，协议用于管理网络设备和软件组件之间的通信。例如，硬件实现的协议控制着在物理连接的两台计算机之间比特流的传输；端系统中的拥塞控制协议管理发送方和接收方之间数据包的传输速率；路由器中的协议决定数据包从源到目的地的路径。</p>
+<p>所有涉及两个或多个远程通信实体的互联网活动都由协议管理。例如，当你在浏览器中输入一个网页URL时，计算机会向网页服务器发送连接请求消息，并等待回应。这个过程由超文本传输协议（HTTP）管理。</p>
+<h4>协议的重要性</h4>
+<p>由于协议对于互联网的正常运行至关重要，因此确保所有系统和产品能够互操作是非常重要的。这就需要标准化。互联网标准由互联网工程任务组（IETF）制定，其标准文件称为请求评论（RFCs）。RFC详细定义了各种协议，如TCP、IP、HTTP（用于网页）和SMTP（用于电子邮件）。</p>
+<p>除了IETF，还有其他机构为网络组件制定标准，例如IEEE 802局域网/城域网标准委员会负责以太网和无线WiFi标准。</p>
+<h4>协议的组成部分</h4>
+<p>一个典型的网络协议包括以下几个组成部分：</p>
+<ol>
+<li><strong>消息格式</strong>：定义了消息的结构和内容，例如头部、数据部分和尾部。</li>
+<li><strong>传输顺序</strong>：定义了消息在通信双方之间的传输顺序和规则。</li>
+<li><strong>错误处理</strong>：定义了在发生错误时的处理方法，例如重传机制、错误检测和纠错技术。</li>
+</ol>
+<h4>协议的实例</h4>
+<ul>
+<li><strong>TCP（传输控制协议）</strong>：提供可靠的数据传输服务，确保数据在传输过程中不丢失且按顺序到达。TCP还包括拥塞控制机制，以防止网络过载。</li>
+<li><strong>UDP（用户数据报协议）</strong>：提供不可靠的、无连接的数据传输服务，适用于对数据丢失不敏感的应用，如视频流和在线游戏。</li>
+</ul>
+<p>这些协议通过套接字接口与应用层进行交互，确保数据在端系统之间可靠传输。</p>
+<h4>小结</h4>
+<p>协议是计算机网络中不可或缺的组成部分，通过定义通信规则和标准，确保网络设备和软件组件之间的互操作性。理解协议的基本原理和标准化过程，对于深入学习和研究计算机网络技术具有重要意义。这个章节详细介绍了协议的概念、作用、组成部分和实例，为进一步理解计算机网络中的通信机制奠定了基础。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 02_1.1.3_What_is_a_Protocol
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 02_1.1.3_What_is_a_Protocol
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

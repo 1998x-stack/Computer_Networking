@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.1.1 A Nuts and Bolts Description</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>00_1.1.1_A_Nuts-and-Bolts_Description</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 00_1.1.1_A_Nuts-and-Bolts_Description
+</code></pre>
+<h3>00_1.1.1_A_Nuts-and-Bolts_Description</h3>
+<h4>互联网的定义</h4>
+<p>互联网是一个全球性的计算机网络，连接了数十亿的计算设备。这些设备不仅包括传统的台式机、Linux工作站和服务器，还包括越来越多的非传统互联网设备，如笔记本电脑、智能手机、平板电脑、电视、游戏控制台、恒温器、家庭安全系统、家电、手表、眼镜、汽车、交通控制系统等。</p>
+<p>在互联网术语中，这些设备被称为“主机”或“端系统”。根据2015年的估计，大约有50亿设备连接到互联网，到2020年这个数字预计将达到250亿。</p>
+<h4>端系统和主机</h4>
+<p>端系统（end systems）是互联网的基础构成部分，主要是指连接到互联网的各种设备。端系统可以是个人计算机、服务器、智能手机、平板电脑等。每个端系统在网络中都有一个唯一的标识，即IP地址。IP地址类似于现实世界中的邮政地址，用于确定数据包的发送和接收位置。</p>
+<h4>通信链路和物理媒体</h4>
+<p>端系统通过通信链路连接到互联网。通信链路由各种物理媒体构成，包括同轴电缆、铜线、光纤和无线电波谱。不同的物理媒体有不同的传输速率和距离。例如：</p>
+<ul>
+<li><strong>同轴电缆</strong>：常用于有线电视和传统的以太网连接，传输速率可以达到数百Mbps。</li>
+<li><strong>铜线</strong>：主要用于电话网络和DSL宽带连接，传输速率通常在几十Mbps到几百Mbps之间。</li>
+<li><strong>光纤</strong>：使用光信号传输数据，具有极高的传输速率（可达Tbps）和长距离传输能力。</li>
+<li><strong>无线电波谱</strong>：用于WiFi、蜂窝网络和卫星通信，传输速率和覆盖范围因具体技术而异。</li>
+</ul>
+<h4>分组交换与电路交换</h4>
+<p>互联网使用分组交换（packet switching）技术进行数据传输。分组交换将数据分成小块（称为数据包），每个数据包独立通过网络传输，并在目的地重新组合。这种方法与传统的电路交换（circuit switching）不同，后者在通信双方之间建立一条专用的通信路径。</p>
+<p>分组交换的主要优势包括：</p>
+<ol>
+<li><strong>效率高</strong>：网络资源可以被多个通信对共享，数据包可以通过不同路径传输，避免了单一路径的瓶颈。</li>
+<li><strong>弹性好</strong>：数据包可以根据网络状况选择不同的路径，增强了网络的鲁棒性和故障恢复能力。</li>
+<li><strong>适应性强</strong>：支持不同类型的数据传输（如视频、音频、文本），满足各种应用需求。</li>
+</ol>
+<h4>路由器和交换机</h4>
+<p>在分组交换网络中，路由器和交换机是关键设备。路由器用于在网络中选择最佳路径，将数据包从源地址传输到目的地址。交换机则主要用于局域网内的数据传输，连接多个设备并进行数据包转发。</p>
+<ul>
+<li><strong>路由器（Router）</strong>：路由器通过运行路由协议（如OSPF、BGP）来确定数据包的最佳传输路径。路由器之间相互通信，交换网络拓扑信息，以构建全网的路由表。每个路由器根据路由表将数据包转发到下一个路由器，直至到达目的地。</li>
+<li><strong>交换机（Switch）</strong>：交换机工作在数据链路层，通过MAC地址进行数据包转发。交换机在局域网内创建多个碰撞域，减少网络冲突，提高传输效率。现代交换机通常支持VLAN（虚拟局域网），可以将物理网络划分为多个逻辑网络，增强网络管理和安全性。</li>
+</ul>
+<h4>IP地址和域名系统（DNS）</h4>
+<p>每个连接到互联网的设备都有一个唯一的IP地址，作为其在网络中的标识。IP地址分为IPv4和IPv6两种：</p>
+<ul>
+<li><strong>IPv4地址</strong>：采用32位地址格式，理论上支持约42亿个地址，由于地址耗尽问题，IPv4地址已经不能满足现代互联网的需求。</li>
+<li><strong>IPv6地址</strong>：采用128位地址格式，支持的地址数量极为庞大，能够满足未来互联网的扩展需求。</li>
+</ul>
+<p>为了方便用户记忆和使用，域名系统（DNS）将易记的域名转换为IP地址。DNS是一种分布式数据库，存储和管理互联网中的域名和IP地址映射。DNS的工作流程包括：</p>
+<ol>
+<li><strong>域名解析请求</strong>：用户在浏览器中输入域名后，计算机会向本地DNS服务器发送解析请求。</li>
+<li><strong>查询过程</strong>：本地DNS服务器查询缓存，如果没有对应记录，则向根DNS服务器、顶级域DNS服务器和权威DNS服务器逐级查询，直至找到对应的IP地址。</li>
+<li><strong>返回结果</strong>：DNS服务器将查询结果返回给用户的计算机，浏览器使用该IP地址访问目标网站。</li>
+</ol>
+<h4>传输控制协议（TCP）和互联网协议（IP）</h4>
+<p>互联网的核心协议包括传输控制协议（TCP）和互联网协议（IP）。IP协议负责定义数据包的格式和地址，确保数据在路由器和端系统之间传输。TCP协议则负责在传输过程中保证数据的可靠性和顺序。TCP/IP协议栈的主要功能包括：</p>
+<ul>
+<li><strong>数据封装</strong>：应用层数据经过传输层、网络层、数据链路层和物理层逐层封装，形成数据包，并通过物理介质传输。</li>
+<li><strong>可靠传输</strong>：TCP协议通过序列号、确认号和重传机制，确保数据包按顺序到达，并处理丢包情况。</li>
+<li><strong>路径选择</strong>：IP协议通过路由算法选择最佳路径，将数据包从源地址传输到目的地址。</li>
+<li><strong>流量控制</strong>：TCP协议根据网络状况动态调整发送窗口大小，避免网络拥塞，保证传输效率。</li>
+</ul>
+<h4>小结</h4>
+<p>互联网作为一个复杂的系统，通过连接全球的计算设备，提供了各种各样的服务和应用。理解其基本架构和运行原理，对于深入学习计算机网络技术具有重要意义。这个章节提供了对互联网基础硬件和软件组件的详细描述，介绍了端系统、通信链路、分组交换机、IP地址、DNS、TCP/IP协议等关键概念。这些内容构成了理解和研究计算机网络的基础。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 00_1.1.1_A_Nuts-and-Bolts_Description
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 00_1.1.1_A_Nuts-and-Bolts_Description
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

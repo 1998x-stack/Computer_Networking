@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.4.4 Throughput in Computer Networks</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>03_1.4.4_Throughput_in_Computer_Networks</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 03_1.4.4_Throughput_in_Computer_Networks
+</code></pre>
+<h3>03_1.4.4_Throughput_in_Computer_Networks</h3>
+<h4>计算机网络中的吞吐量概述</h4>
+<p>在计算机网络中，除了延迟和数据包丢失之外，另一个关键的性能指标是端到端吞吐量（End-to-End Throughput）。为了定义吞吐量，可以考虑在计算机网络中从主机A到主机B传输一个大文件的过程。吞吐量可以分为瞬时吞吐量和平均吞吐量。</p>
+<h4>吞吐量的定义</h4>
+<ol>
+<li>
+<p><strong>瞬时吞吐量（Instantaneous Throughput）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：在任意时刻，瞬时吞吐量是主机B接收文件的速率（以比特/秒为单位）。</li>
+<li><strong>例子</strong>：在点对点（P2P）文件共享系统中，用户界面可能显示下载期间的瞬时吞吐量。</li>
+</ul>
+</li>
+<li>
+<p><strong>平均吞吐量（Average Throughput）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：如果文件大小为F比特，主机B接收所有F比特所需的时间为T秒，则文件传输的平均吞吐量为F/T比特/秒。</li>
+<li><strong>应用</strong>：对于一些应用，例如互联网电话，期望低延迟和瞬时吞吐量始终高于某个阈值（例如，某些互联网电话应用需要超过24 kbps，而某些实时视频应用需要超过256 kbps）。对于其他涉及文件传输的应用，延迟不是关键，但期望有尽可能高的吞吐量。</li>
+</ul>
+</li>
+</ol>
+<h4>吞吐量的实际例子</h4>
+<ol>
+<li>
+<p><strong>例子1：单一文件传输</strong>：</p>
+<ul>
+<li><strong>描述</strong>：如图1.19(a)所示，两个终端系统（服务器和客户端）通过两个通信链路和一个路由器连接。考虑从服务器到客户端的文件传输吞吐量。</li>
+<li><strong>分析</strong>：假设网络中唯一发送的比特是从服务器到客户端的比特，服务器通过速率为$R_s$的链路连接到路由器，路由器通过速率为$R_c$的链路连接到客户端。服务器到客户端的吞吐量为$ \min(R_s, R_c) $。</li>
+</ul>
+</li>
+<li>
+<p><strong>例子2：多文件同时下载</strong>：</p>
+<ul>
+<li><strong>描述</strong>：如图1.20(b)所示，有10个服务器和10个客户端连接到计算机网络的核心部分，同时进行10个下载。这10个下载是网络中唯一的流量。</li>
+<li><strong>分析</strong>：假设所有服务器访问链路的速率为$R_s$，所有客户端访问链路的速率为$R_c$，核心部分的所有链路速率都远高于$R_s$和$R_c$，除了一个共享的速率为$R$的链路。此时，下载的吞吐量受共享链路的限制，为每个下载提供500 kbps的吞吐量。</li>
+</ul>
+</li>
+</ol>
+<h4>吞吐量的瓶颈分析</h4>
+<ul>
+<li>
+<p><strong>瓶颈链路</strong>：在图1.19和图1.20(a)的例子中，当没有其他干扰流量时，吞吐量可以近似为服务器到客户端路径中最小的传输速率。然而，当存在多个数据流时，共享链路的高传输速率可能成为文件传输的瓶颈。</p>
+</li>
+<li>
+<p><strong>瓶颈转移</strong>：在图1.20(b)的例子中，假设共享链路的速率远高于服务器和客户端的访问链路速率，则每个下载的吞吐量为$ \min(R_s, R_c) $。然而，如果共享链路的速率与访问链路速率相同，则共享链路成为瓶颈，每个下载的吞吐量减少到共享链路的速率除以下载数。</p>
+</li>
+</ul>
+<h4>吞吐量与网络结构的关系</h4>
+<p>现代互联网的核心部分通常过度配置了高速链路，经验上很少出现拥塞。因此，访问网络通常成为影响吞吐量的限制因素。通过优化网络结构和合理分配资源，可以提高整体吞吐量，满足不同应用的需求。</p>
+<h4>小结</h4>
+<p>吞吐量是计算机网络性能的关键指标之一。理解吞吐量的定义、计算方法以及影响因素，对于优化网络性能和提升用户体验具有重要意义。通过实际案例分析，可以直观理解吞吐量的变化及其瓶颈所在，从而更好地设计和管理网络资源。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 03_1.4.4_Throughput_in_Computer_Networks
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 03_1.4.4_Throughput_in_Computer_Networks
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

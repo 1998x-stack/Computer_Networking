@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.2.1 Access Networks</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>00_1.2.1_Access_Networks</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
+Content: 00_1.2.1_Access_Networks
+</code></pre>
+<h3>00_1.2.1_Access_Networks</h3>
+<h4>接入网络的定义</h4>
+<p>接入网络（Access Networks）是指将端系统（如个人电脑、智能手机等）物理连接到网络中第一个路由器（也称为“边缘路由器”）的网络。这一部分网络是用户与整个互联网的接口，通过接入网络，端系统可以发送和接收数据，从而实现互联网的各种功能。</p>
+<h4>家庭接入网络</h4>
+<p>家庭接入网络主要有以下几种类型：</p>
+<ol>
+<li>
+<p><strong>DSL（数字用户线路）</strong>：</p>
+<ul>
+<li><strong>DSL简介</strong>：DSL是一种通过现有的电话线提供高速互联网接入的技术。用户的DSL调制解调器通过电话线与位于电信公司本地交换局的DSL接入多路复用器（DSLAM）进行通信。</li>
+<li><strong>DSL的工作原理</strong>：家庭的DSL调制解调器将数字数据转换为高频音调，通过电话线传输到DSLAM，DSLAM再将这些模拟信号转换回数字格式。电话线同时传输数据和传统电话信号，但它们编码在不同的频率上：高频带宽（50 kHz至1 MHz）用于下行数据传输，中频带宽（4 kHz至50 kHz）用于上行数据传输，低频带宽（0至4 kHz）用于传统电话通信。</li>
+</ul>
+</li>
+<li>
+<p><strong>电缆接入（Cable）</strong>：</p>
+<ul>
+<li><strong>电缆接入简介</strong>：电缆互联网接入利用现有的有线电视基础设施。光纤将有线电视头端连接到社区级别的接合点，从接合点到每个家庭和公寓则使用传统的同轴电缆。</li>
+<li><strong>电缆接入的工作原理</strong>：家庭的电缆调制解调器通过同轴电缆与有线电视公司的接入节点进行通信，从而实现互联网连接。每个下行通道的带宽为6 MHz，最大下行吞吐量约为40 Mbps，每个上行通道的带宽为6.4 MHz，最大上行吞吐量约为30 Mbps。</li>
+</ul>
+</li>
+<li>
+<p><strong>FTTH（光纤到户）</strong>：</p>
+<ul>
+<li><strong>FTTH简介</strong>：FTTH是一种将光纤直接铺设到家庭的接入技术，可以提供高达Gbps级别的互联网接入速度。</li>
+<li><strong>FTTH的工作原理</strong>：在FTTH架构中，每个家庭都有一个光网络终端（ONT），通过专用光纤连接到社区分路器。分路器将多个家庭（通常少于100个）合并到一根共享光纤上，再连接到电信公司本地交换局的光线路终端（OLT）。OLT负责光电信号的转换，并通过电信公司的路由器连接到互联网。</li>
+</ul>
+</li>
+<li>
+<p><strong>卫星接入</strong>：</p>
+<ul>
+<li><strong>卫星接入简介</strong>：在DSL、电缆和FTTH不可用的地区（如一些农村地区），卫星接入是一个可行的选择。卫星互联网接入通过卫星链路提供超过1 Mbps的速度。</li>
+<li><strong>卫星接入的工作原理</strong>：卫星链路连接地面站和卫星，通过卫星进行数据的上行和下行传输。</li>
+</ul>
+</li>
+<li>
+<p><strong>拨号接入（Dial-Up）</strong>：</p>
+<ul>
+<li><strong>拨号接入简介</strong>：拨号接入使用传统电话线，通过调制解调器进行互联网连接，但速度非常慢，通常只有56 kbps。</li>
+</ul>
+</li>
+</ol>
+<h4>企业和家庭中的以太网和WiFi接入</h4>
+<ol>
+<li>
+<p><strong>以太网接入</strong>：</p>
+<ul>
+<li><strong>以太网简介</strong>：以太网是企业、大学和家庭网络中最普遍的接入技术，使用双绞铜线连接到以太网交换机。交换机再连接到更大的互联网。</li>
+<li><strong>以太网的速度</strong>：典型的以太网用户有100 Mbps或1 Gbps的接入速度，服务器则可能有1 Gbps甚至10 Gbps的接入速度。</li>
+</ul>
+</li>
+<li>
+<p><strong>WiFi接入</strong>：</p>
+<ul>
+<li><strong>WiFi简介</strong>：WiFi是基于IEEE 802.11技术的无线局域网接入方式，广泛应用于大学、商业办公楼、咖啡馆、机场、家庭等场所。</li>
+<li><strong>WiFi的工作原理</strong>：在无线局域网环境中，无线用户通过访问点（AP）进行数据传输，AP再通过有线以太网连接到互联网。</li>
+</ul>
+</li>
+</ol>
+<h4>广域无线接入：3G和LTE</h4>
+<ol>
+<li>
+<p><strong>3G接入</strong>：</p>
+<ul>
+<li><strong>3G简介</strong>：3G网络提供包交换的广域无线互联网接入，速度超过1 Mbps。</li>
+<li><strong>3G的工作原理</strong>：3G设备使用与蜂窝电话相同的无线基础设施，通过基站发送和接收数据包。</li>
+</ul>
+</li>
+<li>
+<p><strong>LTE接入</strong>：</p>
+<ul>
+<li><strong>LTE简介</strong>：LTE是第四代（4G）广域无线网络技术，速度超过10 Mbps，商业部署中下行速度达到几十Mbps。</li>
+<li><strong>LTE的工作原理</strong>：LTE基于3G技术，通过基站提供高速数据传输。</li>
+</ul>
+</li>
+</ol>
+<h4>小结</h4>
+<p>接入网络是用户连接互联网的桥梁，涵盖了多种技术和方式，包括DSL、电缆、FTTH、卫星接入、拨号接入、以太网和WiFi等。理解这些技术的工作原理和应用场景，对于优化和提升互联网接入体验至关重要。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 00_1.2.1_Access_Networks
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
+Content: 00_1.2.1_Access_Networks
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

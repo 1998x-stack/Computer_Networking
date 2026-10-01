@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.4.3 End to End Delay</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>02_1.4.3_End-to-End_Delay</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 02_1.4.3_End-to-End_Delay
+</code></pre>
+<h3>02_1.4.3_End-to-End_Delay</h3>
+<h4>端到端延迟概述</h4>
+<p>端到端延迟（End-to-End Delay）是指数据包从源主机（source host）传输到目标主机（destination host）过程中所经历的总延迟。这种延迟是多种类型延迟的累积，包括处理延迟、排队延迟、传输延迟和传播延迟。对于实时对话应用（如VoIP），端到端延迟的影响尤为显著。</p>
+<h4>端到端延迟的组成部分</h4>
+<ol>
+<li>
+<p><strong>处理延迟（Processing Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：处理延迟是指路由器在接收到数据包后，检查数据包头部并确定转发路径所需的时间。</li>
+<li><strong>特点</strong>：处理延迟通常在微秒级，在高性能路由器中可以忽略不计。</li>
+</ul>
+</li>
+<li>
+<p><strong>排队延迟（Queuing Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：排队延迟是指数据包在路由器的队列中等待传输的时间。</li>
+<li><strong>特点</strong>：排队延迟的长短取决于网络流量的拥塞情况。当网络流量大时，排队延迟会显著增加。</li>
+</ul>
+</li>
+<li>
+<p><strong>传输延迟（Transmission Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：传输延迟是指将数据包的所有比特推送到链路所需的时间。</li>
+<li><strong>计算公式</strong>：传输延迟=数据包长度（L）/链路传输速率（R），通常在微秒到毫秒级。</li>
+</ul>
+</li>
+<li>
+<p><strong>传播延迟（Propagation Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：传播延迟是指比特从链路的一端传播到另一端所需的时间。</li>
+<li><strong>计算公式</strong>：传播延迟=链路长度（d）/传播速度（s），通常在毫秒级。</li>
+</ul>
+</li>
+</ol>
+<h4>计算端到端延迟</h4>
+<p>假设源主机和目标主机之间有N个路由器，中间链路均为同质（即每个链路的传输速率和长度相同），且网络不拥塞（即排队延迟可以忽略）。在这种情况下，端到端延迟可以表示为：</p>
+<p>$$ \text{端到端延迟} = N \cdot (\text{处理延迟} + \text{传输延迟} + \text{传播延迟}) $$</p>
+<p>如果考虑异质的链路和存在排队延迟的情况，则需要进一步复杂化公式，具体如下：</p>
+<p>$$ \text{端到端延迟} = \sum_{i=1}^{N} (\text{处理延迟}_i + \text{传输延迟}_i + \text{传播延迟}_i + \text{排队延迟}_i) $$</p>
+<p>其中，每个节点i的处理延迟、传输延迟、传播延迟和排队延迟可以分别计算和求和。</p>
+<h4>Traceroute程序</h4>
+<p>为了实际测量端到端延迟，可以使用Traceroute程序。Traceroute是一种简单的程序，可以在任何互联网主机上运行。当用户指定一个目标主机名时，源主机会向目标发送多个特殊数据包。这些数据包在到达目标之前会经过一系列路由器，每个路由器在接收到数据包时，会向源主机返回一个短消息，包含该路由器的名称和地址。通过测量从源发送数据包到接收返回消息的时间，可以重建从源到目标的路径并测量各路由器的往返延迟。</p>
+<h4>实际应用中的端到端延迟</h4>
+<p>在实际应用中，端到端延迟会受到多种因素的影响，如网络拥塞、数据包大小、链路传输速率等。对于实时应用（如VoIP），端到端延迟小于150毫秒时，用户感觉不到延迟；延迟在150到400毫秒之间时，用户可以接受但不理想；延迟超过400毫秒时，会严重影响对话的互动性。</p>
+<p>此外，端到端延迟的波动（即抖动）也是影响实时应用质量的一个重要因素。抖动是指数据包在不同路由器经历不同排队延迟而导致的接收时间不一致。通过使用时间戳、序列号和播放延迟等方法，可以在一定程度上消除抖动对语音质量的影响。</p>
+<h4>小结</h4>
+<p>端到端延迟是计算机网络性能的重要指标之一。理解端到端延迟的组成部分及其计算方法，对于优化网络性能、提升用户体验具有重要意义。通过实际测量和分析端到端延迟，可以有效改进网络设计，满足各种应用的需求。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 02_1.4.3_End-to-End_Delay
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 02_1.4.3_End-to-End_Delay
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

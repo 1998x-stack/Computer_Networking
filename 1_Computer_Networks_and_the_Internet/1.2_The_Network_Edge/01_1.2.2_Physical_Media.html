@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.2.2 Physical Media</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>01_1.2.2_Physical_Media</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
+Content: 01_1.2.2_Physical_Media
+</code></pre>
+<h3>01_1.2.2_Physical_Media</h3>
+<h4>物理介质的定义和分类</h4>
+<p>在上一节中，我们概述了一些互联网中最重要的网络接入技术，并提到了这些技术所使用的物理介质。例如，HFC（混合光纤同轴电缆）使用光纤电缆和同轴电缆的组合；DSL（数字用户线路）和以太网使用铜线；移动接入网络使用无线电波谱。</p>
+<p>为了更好地理解物理介质的概念，我们可以思考一个比特的短暂旅程。一个比特从一个端系统出发，通过一系列链路和路由器，到达另一个端系统。在这个过程中，比特会被多次传输和接收。每一对发送器和接收器之间，比特通过物理介质传播，物理介质可以有多种形态，并且在整个传输路径上不必是同一种类型。</p>
+<p>物理介质分为两大类：导向介质和非导向介质。导向介质中的波沿着固体介质传播，例如光纤电缆、双绞铜线或同轴电缆；非导向介质中的波在大气和外太空传播，例如无线局域网或数字卫星信道。</p>
+<h4>导向介质</h4>
+<ol>
+<li>
+<p><strong>双绞铜线（Twisted-Pair Copper Wire）</strong>：</p>
+<ul>
+<li><strong>简介</strong>：双绞铜线是一种廉价且最常用的导向传输介质，已有一百多年的历史，主要用于电话网络。</li>
+<li><strong>结构</strong>：双绞铜线由两根绝缘铜线组成，每根铜线约1毫米厚，按规律螺旋排列，扭在一起以减少相邻线对的电干扰。</li>
+<li><strong>应用</strong>：无屏蔽双绞线（UTP）常用于建筑内部的计算机网络，即局域网（LAN）。LAN使用双绞线的数据速率范围从10 Mbps到10 Gbps。</li>
+</ul>
+</li>
+<li>
+<p><strong>同轴电缆（Coaxial Cable）</strong>：</p>
+<ul>
+<li><strong>简介</strong>：同轴电缆由两根同心铜导体组成，具有特殊的绝缘和屏蔽，可以实现高数据传输速率。</li>
+<li><strong>应用</strong>：同轴电缆广泛应用于有线电视系统，并与电缆调制解调器结合，提供住宅用户数十Mbps的互联网接入。</li>
+</ul>
+</li>
+<li>
+<p><strong>光纤（Fiber Optics）</strong>：</p>
+<ul>
+<li><strong>简介</strong>：光纤是一种细长的柔性介质，通过传导光脉冲来传输数据，每个脉冲代表一个比特。</li>
+<li><strong>优势</strong>：光纤支持极高的比特率（可达数十Gbps甚至数百Gbps），抗电磁干扰，信号衰减低（可达100公里），且难以窃听。</li>
+<li><strong>应用</strong>：光纤广泛应用于长途传输介质，特别是海外链路和互联网骨干网。</li>
+</ul>
+</li>
+</ol>
+<h4>非导向介质</h4>
+<ol>
+<li>
+<p><strong>地面无线电信道（Terrestrial Radio Channels）</strong>：</p>
+<ul>
+<li><strong>简介</strong>：无线电信道在电磁波谱中传输信号，无需安装物理线缆，可以穿透墙壁，提供移动用户连接，并能传输长距离信号。</li>
+<li><strong>分类</strong>：地面无线电信道大致分为三类：短距离（如无线耳机、键盘）、局部区域（如无线局域网技术）、广域（如蜂窝接入技术）。</li>
+</ul>
+</li>
+<li>
+<p><strong>卫星无线电信道（Satellite Radio Channels）</strong>：</p>
+<ul>
+<li><strong>简介</strong>：通信卫星连接地面上的微波发送/接收站，接收一个频段的信号，使用中继器再生信号，并在另一个频段上发射信号。</li>
+<li><strong>分类</strong>：卫星分为地球同步卫星和低地球轨道（LEO）卫星。地球同步卫星固定在地球上空的同一位置，轨道高度为36000公里，信号传播延迟约为280毫秒。</li>
+<li><strong>应用</strong>：卫星链路常用于DSL或电缆无法覆盖的地区，传输速率可达数百Mbps。</li>
+</ul>
+</li>
+</ol>
+<h4>成本因素</h4>
+<p>物理链路的实际成本（如铜线、光纤电缆等）通常相对较低，而与安装相关的人工成本则可能高出几个数量级。为了节省未来重新铺设电缆的成本，许多建筑在每个房间安装了双绞线、光纤和同轴电缆，即使初期只使用其中一种介质。</p>
+<h4>小结</h4>
+<p>物理介质在计算机网络中扮演着至关重要的角色，它们决定了数据传输的速率和距离。理解不同类型的物理介质及其应用场景，对于构建和优化计算机网络具有重要意义。本章详细介绍了各种导向和非导向介质的特点、结构及其应用，为深入理解计算机网络的物理层奠定了基础。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 01_1.2.2_Physical_Media
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
+Content: 01_1.2.2_Physical_Media
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.5.2 Encapsulation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>01_1.5.2_Encapsulation</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+Content: 01_1.5.2_Encapsulation
+</code></pre>
+<h3>01_1.5.2_Encapsulation</h3>
+<h4>封装概述</h4>
+<p>封装（Encapsulation）是计算机网络中一个重要的概念，它指的是在传输数据时，每一层协议都会在收到的数据包上加上自己的头部信息，从而形成新的数据包。这种方式不仅能够确保数据完整无误地传输到目的地，还能使得每一层协议独立工作，提高了网络的灵活性和可扩展性。</p>
+<h4>封装过程</h4>
+<p>在数据从源主机传输到目标主机的过程中，数据会经过多个层次的封装。具体来说，封装过程如下：</p>
+<ol>
+<li>
+<p><strong>应用层（Application Layer）</strong>：</p>
+<ul>
+<li>数据生成：应用层生成原始数据，称为应用层报文（Application Message）。</li>
+<li>封装：应用层将报文传递给传输层。</li>
+<li>示例：一个电子邮件或一个网页请求就是应用层生成的报文。</li>
+</ul>
+</li>
+<li>
+<p><strong>传输层（Transport Layer）</strong>：</p>
+<ul>
+<li>添加头部信息：传输层在应用层报文的前面加上传输层头部（Transport Layer Header），形成传输层报文段（Transport Layer Segment）。</li>
+<li>功能：头部信息包括发送方和接收方端口号、错误检测码等，用于确保数据正确传输到目标应用程序。</li>
+<li>封装：传输层将报文段传递给网络层。</li>
+<li>示例：TCP或UDP报文段。</li>
+</ul>
+</li>
+<li>
+<p><strong>网络层（Network Layer）</strong>：</p>
+<ul>
+<li>添加头部信息：网络层在传输层报文段的前面加上网络层头部（Network Layer Header），形成网络层数据报（Network Layer Datagram）。</li>
+<li>功能：头部信息包括源IP地址、目标IP地址等，用于确定数据报的路由路径。</li>
+<li>封装：网络层将数据报传递给链路层。</li>
+<li>示例：IP数据报。</li>
+</ul>
+</li>
+<li>
+<p><strong>链路层（Link Layer）</strong>：</p>
+<ul>
+<li>添加头部信息：链路层在网络层数据报的前面加上链路层头部（Link Layer Header），形成链路层帧（Link Layer Frame）。</li>
+<li>功能：头部信息包括源和目标的MAC地址、错误检测码等，用于确保数据帧在链路上的传输。</li>
+<li>封装：链路层将帧传递给物理层。</li>
+<li>示例：以太网帧。</li>
+</ul>
+</li>
+<li>
+<p><strong>物理层（Physical Layer）</strong>：</p>
+<ul>
+<li>数据传输：物理层负责将链路层帧转换为电信号或光信号，通过物理介质（如光纤、电缆等）传输。</li>
+<li>示例：比特流。</li>
+</ul>
+</li>
+</ol>
+<h4>数据解封装</h4>
+<p>数据到达目标主机后，解封装过程与封装过程相反：</p>
+<ol>
+<li><strong>物理层</strong>：接收电信号或光信号，将其转换为比特流，并传递给链路层。</li>
+<li><strong>链路层</strong>：移除链路层头部，提取出网络层数据报，并传递给网络层。</li>
+<li><strong>网络层</strong>：移除网络层头部，提取出传输层报文段，并传递给传输层。</li>
+<li><strong>传输层</strong>：移除传输层头部，提取出应用层报文，并传递给应用层。</li>
+<li><strong>应用层</strong>：处理接收到的应用层报文。</li>
+</ol>
+<h4>封装的实际应用</h4>
+<p>封装不仅用于数据传输，还用于提高网络的安全性和可靠性。例如，在VPN（虚拟专用网络）中，数据通过封装在安全通道内传输，确保数据的保密性和完整性。</p>
+<h4>封装示例</h4>
+<p>以发送一份公司内部的备忘录为例：</p>
+<ol>
+<li><strong>应用层</strong>：Alice编写了一份备忘录，这相当于应用层报文。</li>
+<li><strong>传输层</strong>：Alice将备忘录装入一个写有Bob名字和部门的内部信封，这相当于传输层封装。</li>
+<li><strong>网络层</strong>：公司邮递部门将内部信封装入一个邮政信封，并写上发件人和收件人的公司地址，这相当于网络层封装。</li>
+<li><strong>链路层和物理层</strong>：邮政信封通过邮政系统传递到收件公司的邮递部门，相当于链路层和物理层的传输。</li>
+</ol>
+<h4>小结</h4>
+<p>封装是计算机网络中不可或缺的一部分，通过在数据包上逐层添加头部信息，确保数据能够正确、完整地传输到目标位置。理解封装过程对于深入掌握网络通信原理和提高网络设计能力具有重要意义。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 01_1.5.2_Encapsulation
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+Content: 01_1.5.2_Encapsulation
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.4.1 Overview of Delay in Packet Switched Networks</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
+</code></pre>
+<h3>00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks</h3>
+<h4>分组交换网络中的延迟概述</h4>
+<p>在分组交换网络中，数据包从源主机（host）出发，经过一系列路由器（routers），最终到达目标主机。每当数据包从一个节点（可以是主机或路由器）传输到下一个节点时，都会经历多种类型的延迟。这些延迟主要包括节点处理延迟、排队延迟、传输延迟和传播延迟。这些延迟共同积累形成总的节点延迟。许多互联网应用（如搜索、网页浏览、电子邮件、地图、即时通讯和IP语音等）的性能受到网络延迟的显著影响。</p>
+<h4>延迟类型</h4>
+<ol>
+<li>
+<p><strong>处理延迟（Processing Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：处理延迟是指路由器在接收到数据包后，检查数据包头部并确定数据包转发路径所需的时间。处理延迟还可能包括检查数据包传输过程中出现的比特级错误的时间。</li>
+<li><strong>特点</strong>：在高速路由器中，处理延迟通常在微秒级或更短。</li>
+</ul>
+</li>
+<li>
+<p><strong>排队延迟（Queuing Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：排队延迟是指数据包在路由器的队列中等待传输的时间。</li>
+<li><strong>特点</strong>：排队延迟的长短取决于到达队列的数据包数量和当前队列中已有的数据包数量。排队延迟可能从微秒到毫秒不等。</li>
+</ul>
+</li>
+<li>
+<p><strong>传输延迟（Transmission Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：传输延迟是指将数据包的所有比特“推送”到链路所需的时间。</li>
+<li><strong>计算公式</strong>：传输延迟=数据包长度（L）/链路传输速率（R），通常在微秒到毫秒级。</li>
+</ul>
+</li>
+<li>
+<p><strong>传播延迟（Propagation Delay）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：传播延迟是指比特从链路的一端传播到另一端所需的时间。</li>
+<li><strong>计算公式</strong>：传播延迟=距离（d）/传播速度（s），通常在毫秒级。</li>
+</ul>
+</li>
+</ol>
+<h4>延迟的实际应用</h4>
+<p>理解和量化这些延迟对于深入了解分组交换和计算机网络非常重要。例如，在路由器A上，数据包到达路由器后，首先经历处理延迟，然后进入队列等待传输，最后通过链路传播到下一个节点。在重载情况下，排队延迟可能会显著增加，从而影响整体网络性能。</p>
+<h4>延迟的对比与分析</h4>
+<ol>
+<li>
+<p><strong>传输延迟与传播延迟的对比</strong>：</p>
+<ul>
+<li><strong>传输延迟</strong>：与数据包长度和链路传输速率有关，而与两个路由器之间的距离无关。</li>
+<li><strong>传播延迟</strong>：与两个路由器之间的距离有关，而与数据包长度和链路传输速率无关。</li>
+</ul>
+</li>
+<li>
+<p><strong>延迟的累积效应</strong>：</p>
+<ul>
+<li><strong>总节点延迟</strong>：总节点延迟是处理延迟、排队延迟、传输延迟和传播延迟的总和。在一些情况下，某种类型的延迟可能占主导地位，例如，在卫星链路中，传播延迟可能是最主要的延迟。</li>
+</ul>
+</li>
+</ol>
+<h4>延迟在实际网络中的表现</h4>
+<p>例如，在大学校园内连接两个路由器的链路上，处理延迟和传输延迟可能非常小，而传播延迟可能在毫秒级；而在通过地球同步卫星连接的两个路由器之间，传播延迟可能高达数百毫秒，这可能是总延迟的主要组成部分。</p>
+<h4>小结</h4>
+<p>分组交换网络中的延迟是由多种因素共同决定的，包括处理延迟、排队延迟、传输延迟和传播延迟。理解这些延迟的性质和重要性，对于优化网络性能和提升用户体验至关重要。通过量化和分析这些延迟，可以更好地设计和管理网络，以满足各种应用的需求。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+Content: 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

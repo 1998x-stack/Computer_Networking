@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.3.3 A Network of Networks</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>02_1.3.3_A_Network_of_Networks</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.3_The_Network_Core
+Content: 02_1.3.3_A_Network_of_Networks
+</code></pre>
+<h3>02_1.3.3_A_Network_of_Networks</h3>
+<h4>网络的网络</h4>
+<p>互联网的基本构成单位是终端系统（如个人计算机、智能手机、Web服务器和邮件服务器等），这些终端系统通过接入ISP（Internet Service Provider）连接到互联网。接入ISP可以提供有线或无线连接，采用的接入技术包括DSL、电缆、FTTH、Wi-Fi和蜂窝网络等。</p>
+<p>但是，将终端用户和内容提供商连接到接入ISP只是解决将数十亿终端系统连接到互联网这一难题的一小部分。为了完成这一拼图，接入ISP自身必须互联起来。这是通过创建一个网络的网络来实现的——理解这个短语是理解互联网的关键。</p>
+<h4>互联网结构的演变</h4>
+<p>随着时间的推移，形成互联网的网络的网络演变成了一个非常复杂的结构。这种演变主要是由经济和国家政策驱动的，而不是性能考虑。为了理解当今互联网的网络结构，我们逐步构建了一系列网络结构，每个新结构都更接近我们今天所拥有的复杂互联网。总体目标是互联接入ISP，使所有终端系统可以相互发送数据包。</p>
+<h4>网络结构的逐步构建</h4>
+<ol>
+<li>
+<p><strong>网络结构1</strong>：</p>
+<ul>
+<li><strong>描述</strong>：第一个网络结构将所有接入ISP与单个全球中转ISP互联。我们的（假设的）全球中转ISP是一个由路由器和通信链路组成的网络，不仅覆盖全球，还在每个接入ISP附近至少有一个路由器。显然，建立这样一个广泛的网络成本非常高昂。为了盈利，全球中转ISP自然会向每个接入ISP收取连接费用，费用反映（但不一定与）接入ISP与全球ISP交换的流量量成比例。</li>
+<li><strong>客户和供应商关系</strong>：由于接入ISP支付全球中转ISP费用，因此接入ISP被称为客户，而全球中转ISP被称为供应商。</li>
+</ul>
+</li>
+<li>
+<p><strong>网络结构2</strong>：</p>
+<ul>
+<li><strong>描述</strong>：由数十万接入ISP和多个全球中转ISP组成。接入ISP更喜欢网络结构2，因为它们可以根据价格和服务选择竞争的全球中转提供商。然而，全球中转ISP本身必须互联，否则连接到一个全球中转提供商的接入ISP将无法与连接到其他全球中转提供商的接入ISP通信。</li>
+<li><strong>两层层级结构</strong>：网络结构2是一个两层层级结构，全球中转提供商处于顶层，接入ISP处于底层。虽然一些ISP确实具有令人印象深刻的全球覆盖范围并直接连接许多接入ISP，但没有任何ISP在世界上每个城市都有存在。</li>
+</ul>
+</li>
+<li>
+<p><strong>网络结构3</strong>：</p>
+<ul>
+<li><strong>描述</strong>：进一步复杂化，包括区域ISP和接入ISP之间的关系。每个接入ISP支付其连接的区域ISP费用，每个区域ISP支付其连接的全球中转ISP费用。区域ISP将接入ISP连接到全球互联网，并确保可靠的连接。</li>
+</ul>
+</li>
+</ol>
+<h4>网络互联的经济和政策驱动</h4>
+<p>互联网的网络结构演变主要由经济和政策驱动。为了实现全球互联，各级ISP之间存在复杂的客户和供应商关系。顶级ISP之间通过对等连接（settlement-free peering）直接互联，而不支付费用。</p>
+<h4>当今互联网的结构</h4>
+<p>当今互联网的结构可以描述为由数十个顶级ISP和数十万个底层ISP组成的复杂体系。用户和内容提供商是底层ISP的客户，底层ISP是更高级别ISP的客户。近年来，主要内容提供商（如Google）也创建了自己的网络，并尽可能直接连接到底层ISP，以减少对顶级ISP的依赖和成本。</p>
+<h4>小结</h4>
+<p>互联网作为一个网络的网络，其结构复杂且多层次，包含了从接入ISP到全球中转ISP的多个层级。理解这种结构及其经济和政策驱动因素，对于全面掌握互联网的运作机制至关重要。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 02_1.3.3_A_Network_of_Networks
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.3_The_Network_Core
+Content: 02_1.3.3_A_Network_of_Networks
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

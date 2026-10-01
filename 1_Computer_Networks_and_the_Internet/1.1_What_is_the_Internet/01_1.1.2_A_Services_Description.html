@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.1.2 A Services Description</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>01_1.1.2_A_Services_Description</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 01_1.1.2_A_Services_Description
+</code></pre>
+<h3>01_1.1.2_A_Services_Description</h3>
+<h4>互联网服务的定义</h4>
+<p>互联网不仅仅是由各种硬件和软件组件组成的网络，它更是一个为应用程序提供服务的基础设施。互联网服务的范围非常广泛，除了传统的电子邮件和网页浏览，还包括移动智能手机和平板电脑应用，如互联网消息、实时路况地图、云端音乐流、电影和电视流媒体、在线社交网络、视频会议、多用户游戏和基于位置的推荐系统。</p>
+<h4>分布式应用</h4>
+<p>这些应用程序被称为分布式应用程序，因为它们涉及多个端系统之间的数据交换。重要的是，互联网应用程序运行在端系统上，而不是在网络核心中的分组交换机上。虽然分组交换机促进了端系统之间的数据交换，但它们并不关心数据的来源或目的应用程序。</p>
+<h4>基础设施服务的实现</h4>
+<p>假设你有一个激动人心的新想法，想要开发一个分布式的互联网应用程序。要将这个想法变为实际的互联网应用程序，你需要编写运行在端系统上的程序。例如，你可以使用Java、C或Python编写程序。由于你开发的是一个分布式互联网应用程序，这些程序需要在不同的端系统之间发送数据。</p>
+<p>如何实现这个过程是关键问题之一，这也引出了另一种描述互联网的方法，即作为一个为应用程序提供服务的平台。应用程序开发者在开发网络应用程序时，需要解决的核心问题是：如何使一个端系统上的程序指示互联网将数据传送到另一个端系统上的程序。</p>
+<h4>传输层的选择</h4>
+<p>在开发应用程序时，开发者需要选择合适的传输层协议。传输层协议提供了一组服务，应用程序可以根据需求选择合适的协议。例如，开发者可以选择使用TCP（传输控制协议）或UDP（用户数据报协议）。</p>
+<ul>
+<li><strong>TCP（传输控制协议）</strong>：提供可靠的数据传输服务，确保数据在传输过程中不丢失且按顺序到达。TCP还包括拥塞控制机制，以防止网络过载。</li>
+<li><strong>UDP（用户数据报协议）</strong>：提供不可靠的、无连接的数据传输服务，适用于对数据丢失不敏感的应用，如视频流和在线游戏。</li>
+</ul>
+<h4>应用层和传输层的交互</h4>
+<p>传输层协议通过套接字（socket）接口与应用层进行交互。发送端的应用程序通过套接字将消息推送到传输层协议，传输层协议负责将消息传送到接收端的套接字。不同的传输层协议提供不同的服务模型，开发者可以根据应用程序的需求选择合适的协议。</p>
+<h4>标准和协议</h4>
+<p>互联网协议的标准化对于确保不同系统和产品之间的互操作性至关重要。互联网标准由互联网工程任务组（IETF）制定，其标准文件称为请求评论（RFCs）。这些文件详细定义了各种协议，如TCP、IP、HTTP（用于网页）和SMTP（用于电子邮件）。目前已有超过7000个RFCs。</p>
+<p>此外，还有其他机构为网络组件制定标准，例如IEEE 802局域网/城域网标准委员会，负责以太网和无线WiFi标准。</p>
+<h4>小结</h4>
+<p>互联网作为一个为应用程序提供服务的基础设施，其核心在于通过选择合适的传输层协议和标准，确保数据在端系统之间可靠传输。理解这些服务的基本原理，对于开发高效和可靠的互联网应用程序至关重要。这一章节详细介绍了互联网服务的概念、分布式应用的实现、传输层协议的选择和标准化的重要性，为深入学习和研究计算机网络技术奠定了基础。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 01_1.1.2_A_Services_Description
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.1_What_is_the_Internet
+Content: 01_1.1.2_A_Services_Description
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  

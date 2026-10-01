@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>1.5.1 Layered Architecture</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
+  <link rel="stylesheet" href="../../markdown.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../markdown.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>00_1.5.1_Layered_Architecture</h1>
+<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+Content: 00_1.5.1_Layered_Architecture
+</code></pre>
+<h3>00_1.5.1_Layered_Architecture</h3>
+<h4>分层架构概述</h4>
+<p>分层架构是一种用于描述和组织复杂系统的设计方法，通过将系统划分为多个层次，每个层次提供特定的服务，并使用下层提供的服务，从而实现系统的模块化和简化管理。这种方法在网络设计中尤为重要，可以帮助设计和实现网络协议、硬件和软件。</p>
+<h4>分层架构的基本原理</h4>
+<p>在分层架构中，每一层都有其独立的功能，并且通过清晰定义的接口与上下层进行交互。这种设计允许我们独立更改某一层的实现，而不会影响到系统的其他部分。例如，航空系统中，各种功能可以分层次描述：购票、行李托运、登机、飞行、降落等。这种分层结构可以使得每一层的更改都独立于其他层，只要其提供的服务和接口不变。</p>
+<p>在计算机网络中，协议和硬件、软件都被组织成不同的层次，每个协议属于其中的一层。每一层协议为上层提供服务，同时使用下层提供的服务。例如，传输层可以提供从网络一端到另一端的可靠消息传递服务，这可能通过使用网络层的不可靠消息传递服务，并添加检测和重传丢失消息的功能来实现。</p>
+<h4>网络协议的分层</h4>
+<ol>
+<li>
+<p><strong>应用层</strong>：</p>
+<ul>
+<li><strong>功能</strong>：应用层是网络应用及其协议所在的层次，如HTTP、SMTP、FTP等。</li>
+<li><strong>实现</strong>：几乎总是在终端系统中以软件方式实现。例如，Web浏览器和Web服务器之间的通信就是通过HTTP协议实现的。</li>
+</ul>
+</li>
+<li>
+<p><strong>传输层</strong>：</p>
+<ul>
+<li><strong>功能</strong>：传输层负责在应用程序之间传递数据，提供端到端的通信服务。常见协议包括TCP和UDP。</li>
+<li><strong>实现</strong>：传输层协议一般也在终端系统中以软件实现。</li>
+</ul>
+</li>
+<li>
+<p><strong>网络层</strong>：</p>
+<ul>
+<li><strong>功能</strong>：网络层负责将数据包从源节点传递到目标节点，常见协议是IP。</li>
+<li><strong>实现</strong>：网络层通常是硬件和软件的混合实现，路由器在这一层起关键作用。</li>
+</ul>
+</li>
+<li>
+<p><strong>数据链路层</strong>：</p>
+<ul>
+<li><strong>功能</strong>：数据链路层负责在同一网络段内传输数据帧，提供节点到节点的传输服务。常见协议包括以太网协议。</li>
+<li><strong>实现</strong>：这一层通常在网络接口卡（如以太网卡或WiFi卡）中实现。</li>
+</ul>
+</li>
+<li>
+<p><strong>物理层</strong>：</p>
+<ul>
+<li><strong>功能</strong>：物理层负责在物理介质上传输比特，提供最底层的通信功能。</li>
+<li><strong>实现</strong>：通常在硬件中实现，如光纤、电缆等。</li>
+</ul>
+</li>
+</ol>
+<h4>分层架构的优势</h4>
+<ol>
+<li><strong>简化复杂系统</strong>：通过分层，系统的复杂性被分解，每层只需关注其特定功能，降低了设计和实现的难度。</li>
+<li><strong>模块化设计</strong>：各层相互独立，可以独立更改某一层的实现而不影响其他层。例如，可以更改网络层的路由算法而不影响传输层的功能。</li>
+<li><strong>易于更新和维护</strong>：分层结构使得系统的更新和维护更加便捷。例如，可以升级应用层协议而无需更改下层协议。</li>
+</ol>
+<h4>分层架构的挑战</h4>
+<p>尽管分层架构有诸多优势，但也存在一些潜在问题：</p>
+<ol>
+<li><strong>功能重复</strong>：某些层可能会重复下层的功能，例如，传输层和链路层都可能提供错误检测和纠正功能。</li>
+<li><strong>层间依赖性</strong>：某些情况下，高层功能可能需要依赖低层的信息，这可能打破层次分离的原则。</li>
+</ol>
+<h4>小结</h4>
+<p>分层架构为复杂系统的设计和实现提供了一种有效的方法，通过将系统功能模块化，每层提供独立的服务并使用下层提供的服务，可以大大简化系统的设计、实现和维护。理解分层架构的基本原理及其在计算机网络中的应用，对于深入掌握网络技术至关重要。</p>
+
+    <h3>Python 文件</h3>
+    <pre><code># 00_1.5.1_Layered_Architecture
+
+"""
+Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+Content: 00_1.5.1_Layered_Architecture
+"""
+
+</code></pre>
+  </div>
+</body>
+</html>
+  
