@@ -123,3 +123,4 @@ P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 已由 PR #2 �
 - 详细设计及未完成的人工审查：docs/modules/P1-M2-network-performance.md。
 - PR 按依赖顺序合并：#3 → #4 → P1-M2；每次更新 base 后重新运行 CI。
 
+- 自动验收：四个修改后的 HTML 从 Markdown 再生成，完整 Python 回归、旧 HTML 安全检查及构建一致性检查均通过，GitHub Actions 41039634079。
