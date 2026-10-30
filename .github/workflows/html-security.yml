@@ -1,0 +1,34 @@
+name: Static HTML security
+
+on:
+  push:
+    branches: [main, "fix/**"]
+  pull_request:
+    paths:
+      - "**/*.html"
+      - "markdown.js"
+      - "scripts/migrate_html_security.py"
+      - "tests/test_html_security.py"
+      - "tests/test_markdown.cjs"
+      - ".github/workflows/html-security.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  static-html:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Python regressions (includes P0-M1)
+        run: python -m unittest discover -s tests -v
+      - name: Confirm all HTML references are migrated
+        run: python scripts/migrate_html_security.py --check
+      - name: Reader export regression
+        run: node --test tests/test_markdown.cjs

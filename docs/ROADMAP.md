@@ -76,6 +76,17 @@ P0-M1 无损生成
 - 运行命令和完整验收记录见 docs/modules/P0-M1-safe-scaffold.md。
 - 交付状态：实现已提交至独立分支；以 PR 和 CI 检查结论为正式验收依据。
 
-## 6. 下一模块启动条件
+## 6. 模块交付门槛
 
-P0-M2 在 P0-M1 的 PR 经过评审、测试通过且无损生成风险排除后开始。优先清理 HTML 的不安全 polyfill 依赖，并核实教材 PDF 的授权范围。
+P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 进入独立分支实施；待审核后继续 P0-M3。
+
+
+## 7. P0-M2 交付记录（2026-10-30）
+
+- 分支：fix/p0-m2-static-html-security。
+- 已迁移 213 个章节/索引 HTML 页面，删除已知不安全的 polyfill.io 脚本引用，调整 highlight.js 与 MathJax 的确定性加载顺序。
+- markdown.js 导出改为克隆文章并保存完整 HTML，不重复追加评论。
+- 测试：tests/test_html_security.py、tests/test_markdown.cjs；CI：.github/workflows/html-security.yml。
+- 详细说明：docs/modules/P0-M2-html-security.md。
+- 第三方教材 PDF 的再分发授权状态：PENDING，尚未核实；原文件保持不变，不能以本仓库 MIT 许可替代第三方授权。
+- 交付状态：实现与 CI 已通过；PR 人工审核及版权授权确认仍待完成。P0-M3 只在本模块审查后启动。
