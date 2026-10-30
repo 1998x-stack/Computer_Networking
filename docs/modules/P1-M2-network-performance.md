@@ -50,7 +50,7 @@ python examples/network_performance.py share --source 10000000 --destination 100
 
 - [x] 四篇 Markdown 直接勘误与教学补充。
 - [x] Python 性能模型与单元测试提交。
-- [ ] 四个 HTML 与 Markdown 同步构建并通过全部 CI。
+- [x] 四个 HTML 已由 Markdown 同步构建，且脚本测试、全站 --check 与旧安全迁移检查通过（GitHub Actions #41039634079）。
 - [ ] 人工浏览器公式与排版验证。
 - [ ] 堆叠 PR 经过审核并按顺序合并。
 
