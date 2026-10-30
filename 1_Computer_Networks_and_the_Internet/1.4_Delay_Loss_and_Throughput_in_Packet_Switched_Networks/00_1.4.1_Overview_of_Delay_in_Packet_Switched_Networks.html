@@ -25,25 +25,25 @@ Content: 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
 <li><p><strong>处理延迟（Processing Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：处理延迟是指路由器在接收到数据包后，检查数据包头部并确定数据包转发路径所需的时间。处理延迟还可能包括检查数据包传输过程中出现的比特级错误的时间。</li>
-<li><strong>特点</strong>：在高速路由器中，处理延迟通常在微秒级或更短。</li>
+<li><strong>特点</strong>：在高速路由器中，处理时延随设备与处理路径变化，不能当作所有路由器都有固定微秒级时延；例题必须明确采用的处理时延。</li>
 </ul>
 </li>
 <li><p><strong>排队延迟（Queuing Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：排队延迟是指数据包在路由器的队列中等待传输的时间。</li>
-<li><strong>特点</strong>：排队延迟的长短取决于到达队列的数据包数量和当前队列中已有的数据包数量。排队延迟可能从微秒到毫秒不等。</li>
+<li><strong>特点</strong>：排队延迟的长短取决于到达队列的数据包数量和当前队列中已有的数据包数量。排队时延是变化量，可能为零，也可能因持续排队而显著上升；不能给它无条件设定固定上限。</li>
 </ul>
 </li>
 <li><p><strong>传输延迟（Transmission Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：传输延迟是指将数据包的所有比特“推送”到链路所需的时间。</li>
-<li><strong>计算公式</strong>：传输延迟=数据包长度（L）/链路传输速率（R），通常在微秒到毫秒级。</li>
+<li><strong>计算公式</strong>：发送时延为 L/R（L：bit；R：bit/s；结果：s），不包括传播、排队和处理时延。</li>
 </ul>
 </li>
 <li><p><strong>传播延迟（Propagation Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：传播延迟是指比特从链路的一端传播到另一端所需的时间。</li>
-<li><strong>计算公式</strong>：传播延迟=距离（d）/传播速度（s），通常在毫秒级。</li>
+<li><strong>计算公式</strong>：传播时延为 d/v（d：m；v：m/s；结果：s）。这里用 v 表示信号传播速度，避免把 s 与秒的单位符号混淆。</li>
 </ul>
 </li>
 </ol>
@@ -64,9 +64,21 @@ Content: 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
 </li>
 </ol>
 <h4>延迟在实际网络中的表现</h4>
-<p>例如，在大学校园内连接两个路由器的链路上，处理延迟和传输延迟可能非常小，而传播延迟可能在毫秒级；而在通过地球同步卫星连接的两个路由器之间，传播延迟可能高达数百毫秒，这可能是总延迟的主要组成部分。</p>
+<p>例如，两个校园路由器相距 200 m，假定传播速度为 2×10^8 m/s，则传播时延仅约 1 μs；实际设备或队列时延可能更显著。而在通过地球同步卫星连接的两个路由器之间，传播延迟可能高达数百毫秒，这可能是总延迟的主要组成部分。</p>
 <h4>小结</h4>
 <p>分组交换网络中的延迟是由多种因素共同决定的，包括处理延迟、排队延迟、传输延迟和传播延迟。理解这些延迟的性质和重要性，对于优化网络性能和提升用户体验至关重要。通过量化和分析这些延迟，可以更好地设计和管理网络，以满足各种应用的需求。</p>
+<h4>校订与实验：四种时延的量纲和边界</h4>
+<p>对于一个节点的输出链路，可在简化模型中写为：</p>
+<div class="math">$$
+d_{\mathrm{node}}=d_{\mathrm{proc}}+d_{\mathrm{queue}}+\frac{L}{R}+\frac{d}{v}
+$$</div>
+<p><strong>四项不同含义</strong>：处理时延来自设备处理；排队时延来自等待链路可用；发送时延 L/R 是把所有比特送入链路的时间；传播时延 d/v 是信号沿链路移动的时间。更高的链路速率不会缩短同一长度链路的传播时延。</p>
+<p><strong>量纲示例</strong>：12,000 bit 的分组使用 1 Mbps 链路需要 12 ms 发送；200 km 的链路、假定信号速度为 2×10^8 m/s，需要 1 ms 传播。忽略其余两项时，总计 <strong>13 ms</strong>。这不是把 RTT 与单向时延混为一谈。</p>
+<p>可验证命令（在仓库根目录运行）：</p>
+<pre><code class="language-bash">python examples/network_performance.py delay --bits 12000 --rates 1000000 --propagation 0.001
+</code></pre>
+<p>输出为 `0.013000 seconds`。程序只计算模型值，不发送分组或测量实际互联网。</p>
+<p>参考：Kurose–Ross 第 1 章关于网络时延的教学框架；<a href="https://www.rfc-editor.org/rfc/rfc7567">RFC 7567（主动队列管理建议）</a> 解释现实网络中控制排队时延的重要性。</p>
 <h3>Python 文件</h3>
 <pre><code># 00_1.4.1_Overview_of_Delay_in_Packet-Switched_Networks
 
