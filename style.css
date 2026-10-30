@@ -89,3 +89,43 @@ h1 {
 .link-item a:visited {
   color: #888; /* 设置已访问链接的颜色 */
 }
+
+
+/* P0-M3: responsive generated index; overrides legacy fixed-size cards. */
+.container {
+  box-sizing: border-box;
+  width: min(1100px, calc(100% - 2rem));
+  max-width: 100%;
+  margin: 1rem auto;
+  text-align: left;
+}
+.tree-container ul {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  gap: .5rem;
+}
+.tree-container .link-item {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: .7rem 1rem;
+  margin: 0;
+  border-radius: .5rem;
+}
+.tree-container .link-item a {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+.tree-container h2 { font-size: 1.45rem; }
+.tree-container h3 { font-size: 1.15rem; }
+@media (max-width: 480px) {
+  .container { width: calc(100% - 1rem); padding: 1rem; }
+  h1 { font-size: 1.6rem; }
+}

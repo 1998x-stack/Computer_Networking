@@ -1,23 +1,20 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.3 End to End Delay</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-  
-  <title>1.4.3 End to End Delay</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
   <link rel="stylesheet" href="../../markdown.css">
-  
   <script defer src="../../markdown.js"></script>
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>02_1.4.3_End-to-End_Delay</h1>
-<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
+<h1>02_1.4.3_End-to-End_Delay</h1>
+<pre><code class="language-text">Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
 Content: 02_1.4.3_End-to-End_Delay
 </code></pre>
 <h3>02_1.4.3_End-to-End_Delay</h3>
@@ -25,29 +22,25 @@ Content: 02_1.4.3_End-to-End_Delay
 <p>端到端延迟（End-to-End Delay）是指数据包从源主机（source host）传输到目标主机（destination host）过程中所经历的总延迟。这种延迟是多种类型延迟的累积，包括处理延迟、排队延迟、传输延迟和传播延迟。对于实时对话应用（如VoIP），端到端延迟的影响尤为显著。</p>
 <h4>端到端延迟的组成部分</h4>
 <ol>
-<li>
-<p><strong>处理延迟（Processing Delay）</strong>：</p>
+<li><p><strong>处理延迟（Processing Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：处理延迟是指路由器在接收到数据包后，检查数据包头部并确定转发路径所需的时间。</li>
 <li><strong>特点</strong>：处理延迟通常在微秒级，在高性能路由器中可以忽略不计。</li>
 </ul>
 </li>
-<li>
-<p><strong>排队延迟（Queuing Delay）</strong>：</p>
+<li><p><strong>排队延迟（Queuing Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：排队延迟是指数据包在路由器的队列中等待传输的时间。</li>
 <li><strong>特点</strong>：排队延迟的长短取决于网络流量的拥塞情况。当网络流量大时，排队延迟会显著增加。</li>
 </ul>
 </li>
-<li>
-<p><strong>传输延迟（Transmission Delay）</strong>：</p>
+<li><p><strong>传输延迟（Transmission Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：传输延迟是指将数据包的所有比特推送到链路所需的时间。</li>
 <li><strong>计算公式</strong>：传输延迟=数据包长度（L）/链路传输速率（R），通常在微秒到毫秒级。</li>
 </ul>
 </li>
-<li>
-<p><strong>传播延迟（Propagation Delay）</strong>：</p>
+<li><p><strong>传播延迟（Propagation Delay）</strong>：</p>
 <ul>
 <li><strong>定义</strong>：传播延迟是指比特从链路的一端传播到另一端所需的时间。</li>
 <li><strong>计算公式</strong>：传播延迟=链路长度（d）/传播速度（s），通常在毫秒级。</li>
@@ -67,17 +60,15 @@ Content: 02_1.4.3_End-to-End_Delay
 <p>此外，端到端延迟的波动（即抖动）也是影响实时应用质量的一个重要因素。抖动是指数据包在不同路由器经历不同排队延迟而导致的接收时间不一致。通过使用时间戳、序列号和播放延迟等方法，可以在一定程度上消除抖动对语音质量的影响。</p>
 <h4>小结</h4>
 <p>端到端延迟是计算机网络性能的重要指标之一。理解端到端延迟的组成部分及其计算方法，对于优化网络性能、提升用户体验具有重要意义。通过实际测量和分析端到端延迟，可以有效改进网络设计，满足各种应用的需求。</p>
+<h3>Python 文件</h3>
+<pre><code># 02_1.4.3_End-to-End_Delay
 
-    <h3>Python 文件</h3>
-    <pre><code># 02_1.4.3_End-to-End_Delay
-
-"""
+&quot;&quot;&quot;
 Lecture: 1_Computer_Networks_and_the_Internet/1.4_Delay_Loss_and_Throughput_in_Packet-Switched_Networks
 Content: 02_1.4.3_End-to-End_Delay
-"""
+&quot;&quot;&quot;
 
 </code></pre>
   </div>
 </body>
 </html>
-  
