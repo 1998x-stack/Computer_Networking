@@ -1,0 +1,41 @@
+name: One-time P1-M1 lesson HTML regeneration
+
+on:
+  push:
+    branches:
+      - docs/p1-m1-network-foundations
+    paths:
+      - ".github/workflows/p1-m1-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update-lesson-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install renderer
+        run: python -m pip install -r requirements-docs.txt
+      - name: Rebuild affected chapters and check reproducibility
+        run: |
+          python scripts/build_docs.py --write
+          python scripts/build_docs.py --check
+          python scripts/migrate_html_security.py --check
+          python -m unittest discover -s tests -v
+          changed=$(git diff --name-only -- '*.html' | wc -l)
+          echo "Updated chapter HTML pages: $changed"
+          test "$changed" -eq 8
+      - name: Commit only regenerated HTML into module branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u -- '*.html'
+          git commit -m "docs(p1-m1): render eight corrected chapter pages"
+          git push origin HEAD:docs/p1-m1-network-foundations
