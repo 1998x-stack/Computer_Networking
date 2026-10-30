@@ -113,3 +113,13 @@ P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 已由 PR #2 �
 - 模块追踪及权威参考：docs/modules/P1-M1-network-foundations.md。
 - 自动验收：8 个对应 HTML 已完成再生成；P0-M3 全站 --check、P0-M2 安全检查与 Python 回归测试已通过。仍待 PR 人工审核及合并。
 - 后续 P1-M2：第 1 章 1.4 时延、排队、丢包与吞吐量。
+
+## 10. P1-M2 性能模型与勘误（2026-10-30）
+
+- 依赖 P0-M3（PR #3）和 P1-M1（PR #4），分支 docs/p1-m2-network-performance。
+- 第 1 章 1.4.1–1.4.4 共四篇源 Markdown 完成概念、公式、前提条件的定点校订。
+- 新增 examples/network_performance.py 和 tests/test_network_performance.py，涵盖链路/路由器计数、FIFO 队列、丢包、M/D/1、共享吞吐量上界和 goodput。
+- 每篇校订分别引用 RFC 或原教材的学习框架，并给出可复算实验。
+- 详细设计及未完成的人工审查：docs/modules/P1-M2-network-performance.md。
+- PR 按依赖顺序合并：#3 → #4 → P1-M2；每次更新 base 后重新运行 CI。
+
