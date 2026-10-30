@@ -102,3 +102,14 @@ P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 已由 PR #2 �
 - 详细说明：docs/modules/P0-M3-docs-build.md。
 - 尚未完成：PR 人工审核、浏览器视觉测试、完全离线资源打包、第三方 PDF 许可确认。
 - 下一阶段：P1-M1 互联网体系结构知识勘误。
+
+
+## 9. P1-M1 互联网基础知识勘误（2026-10-30）
+
+- 前置依赖：P0-M3 的 Markdown → HTML 可重复构建。
+- 分支：docs/p1-m1-network-foundations；在 P0-M3 分支上创建，以避免未合并依赖混进主分支。
+- 1.1–1.3 合计 8 个条目逐篇校订；修正 IP 地址、控制平面与转发平面、协议职责、技术代际、存储转发模型与 ISP 互联的表述。
+- 新增 examples/network_foundations.py 和 tests/test_network_foundations.py，提供无网络副作用的离线案例。
+- 模块追踪及权威参考：docs/modules/P1-M1-network-foundations.md。
+- 自动验收：8 个对应 HTML 已完成再生成；P0-M3 全站 --check、P0-M2 安全检查与 Python 回归测试已通过。仍待 PR 人工审核及合并。
+- 后续 P1-M2：第 1 章 1.4 时延、排队、丢包与吞吐量。

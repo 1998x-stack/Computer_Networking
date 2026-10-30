@@ -68,7 +68,7 @@ Content: 00_1.2.1_Access_Networks
 </ul>
 </li>
 </ol>
-<h4>广域无线接入：3G和LTE</h4>
+<h4>广域无线接入：3G 和 LTE（教材中的历史技术示例）</h4>
 <ol>
 <li><p><strong>3G接入</strong>：</p>
 <ul>
@@ -79,12 +79,22 @@ Content: 00_1.2.1_Access_Networks
 <li><p><strong>LTE接入</strong>：</p>
 <ul>
 <li><strong>LTE简介</strong>：LTE是第四代（4G）广域无线网络技术，速度超过10 Mbps，商业部署中下行速度达到几十Mbps。</li>
-<li><strong>LTE的工作原理</strong>：LTE基于3G技术，通过基站提供高速数据传输。</li>
+<li><strong>LTE的工作原理</strong>：LTE 是 3GPP 体系的 4G 无线接入技术，通过演进的无线接入网和分组核心网提供数据服务，并不只是把 3G 提速。</li>
 </ul>
 </li>
 </ol>
 <h4>小结</h4>
 <p>接入网络是用户连接互联网的桥梁，涵盖了多种技术和方式，包括DSL、电缆、FTTH、卫星接入、拨号接入、以太网和WiFi等。理解这些技术的工作原理和应用场景，对于优化和提升互联网接入体验至关重要。</p>
+<h4>校订：技术代际、标称速率与实测吞吐量</h4>
+<p>本节出现的 DSL 频段、电缆信道速率、以太网典型速率、3G/LTE 速度属于<strong>特定教材年代与部署条件下的示例</strong>，不应直接理解为 2026 年所有网络的实际性能。现代接入网络还包括不同代际的 FTTH/PON、Wi-Fi 和 5G；不同地区、部署、信号、共享用户数量会产生显著差异。</p>
+<p>区分三个概念：</p>
+<ul>
+<li><strong>链路标称速率</strong>：物理层或链路层公布的连接速率。</li>
+<li><strong>端到端吞吐量</strong>：受路径瓶颈、共享负载和协议开销共同限制。</li>
+<li><strong>接入技术</strong>：决定如何连接第一跳，不等于网络核心的路由策略。</li>
+</ul>
+<p><strong>验证问题</strong>：在家庭中，Wi-Fi 链路显示 1 Gbps，是否意味着互联网下载必然达到 1 Gbps？不一定，互联网接入、远端服务器、并发负载等都可能成为瓶颈。</p>
+<p>参考：<a href="https://gaia.cs.umass.edu/kurose_ross/videos/1/">Kurose–Ross 第 1 章作者教学资源</a>。</p>
 <h3>Python 文件</h3>
 <pre><code># 00_1.2.1_Access_Networks
 

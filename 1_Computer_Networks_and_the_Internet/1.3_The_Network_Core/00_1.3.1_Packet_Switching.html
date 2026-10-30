@@ -26,20 +26,37 @@ Content: 00_1.3.1_Packet_Switching
 <p>大多数分组交换机在链路的输入端使用存储-转发（store-and-forward）传输。存储-转发传输意味着分组交换机必须接收整个分组，然后才能将分组的第一个比特传输到出站链路上。考虑一个简单的网络，其中两个端系统通过一个路由器连接，如图所示：</p>
 <ul>
 <li><strong>存储过程</strong>：在某一时刻，源端系统传输分组1的一部分，分组1的前部已到达路由器。由于路由器采用存储-转发，此时路由器不能传输已接收的比特，而必须首先存储分组的所有比特 。</li>
-<li><strong>转发过程</strong>：只有在路由器接收到整个分组的比特后，它才能开始将分组传输到出站链路上。假设没有传播延迟，从源开始发送分组到目标接收到整个分组的时间总延迟为2L/R 。</li>
+<li><strong>转发过程</strong>：只有在路由器接收到整个分组的比特后，它才能开始将分组传输到出站链路上。仅在两个链路传输速率相同、分组长度均为 L、使用完整存储转发且忽略传播、处理和排队时延时，源到目的收到整包的时延才为 <code>2L/R</code>。如果两条链路速率分别为 <code>R1</code>、<code>R2</code>，则为 <code>L/R1 + L/R2</code>（仍忽略其他时延）。</li>
 </ul>
 <h4>分组交换与电路交换的对比</h4>
 <p>与电路交换（circuit switching）相比，分组交换的资源不是预留的，消息按需使用资源，可能需要等待（即排队）访问通信链路。电路交换预先分配资源，通信期间独占使用这些资源。而分组交换则是按需分配资源，仅在需要传输分组时才使用链路的传输容量  。</p>
 <p>分组交换的优点包括：</p>
 <ol>
 <li><strong>更高效的资源利用</strong>：分组交换允许多个会话共享相同的传输资源，提高了资源利用率。例如，在TDM电路交换中，每个用户会分配一个固定的时隙，而分组交换中，链路按需分配给有数据传输需求的用户 。</li>
-<li><strong>更低的成本</strong>：由于分组交换不需要为每个会话预留专用资源，其实现和维护成本较低。</li>
+<li><strong>更低的成本</strong>：对于突发业务，按需共享带宽可能降低资源闲置；但设备、管理与部署成本依场景而异，不能仅凭交换方式断言一定更便宜。</li>
 <li><strong>更大的灵活性</strong>：分组交换能够更好地应对突发性流量和不同类型的数据传输需求，例如实时视频和文件传输 。</li>
 </ol>
 <h4>分组交换的历史发展</h4>
 <p>分组交换技术的开发始于20世纪60年代。Leonard Kleinrock在MIT时，通过排队理论证明了分组交换在处理突发流量方面的有效性。Paul Baran在兰德公司研究将分组交换用于军事网络的安全语音传输，Donald Davies和Roger Scantlebury在英国国家物理实验室也在开发分组交换技术 。这些研究奠定了现代互联网的基础。</p>
 <h4>小结</h4>
 <p>分组交换是现代计算机网络中的关键技术，通过将长消息分解为分组并通过网络传输，提高了资源利用率和网络灵活性。理解分组交换的工作原理和历史背景，对于深入学习计算机网络技术至关重要    。</p>
+<h4>校订与实验：单分组时延、流水线与排队</h4>
+<p><strong>模型假设</strong>：存储转发、所有链路按序发送完整分组、无处理延迟、无丢包及重传。链路速率可以不同。</p>
+<p>对包含 <code>H</code> 条链路的单个分组，分组长 <code>L</code> 比特，各链路速率 <code>R_i</code>，传播时延 <code>p_i</code>：</p>
+<div class="math">$$
+T_{single} = \sum_{i=1}^{H} \left(\frac{L}{R_i} + p_i\right)
+$$</div>
+<ul>
+<li><strong>例题 A</strong>：<code>L = 12,000 bits</code>，两条链路都是 <code>1 Mbps</code>，忽略传播时延，结果 <code>0.024 秒 = 24 ms</code>。</li>
+<li><strong>例题 B</strong>：两条链路分别为 <code>1 Mbps</code> 和 <code>2 Mbps</code>，结果 <code>12 ms + 6 ms = 18 ms</code>。</li>
+<li><strong>例题 C</strong>：<code>H</code> 条等速链路连续发送 <code>N</code> 个等长分组，在理想无其他开销的流水线模型中，最后一包完整到达的时间为 <code>(H+N-1)L/R</code>。例如 <code>H=2</code>、<code>N=3</code>、<code>L=12,000</code>、<code>R=1 Mbps</code>，得到 <code>48 ms</code>。这不是三个分组各花 24 ms 后简单相加。</li>
+</ul>
+<p>终端输入（仓库根目录）：</p>
+<pre><code class="language-bash">python examples/network_foundations.py packet --bits 12000 --rates 1000000 1000000
+python examples/network_foundations.py packet --bits 12000 --rates 1000000 2000000
+</code></pre>
+<p><strong>边界条件</strong>：分组交换允许统计复用，不意味着没有瓶颈；当到达流量超过服务能力时，排队与丢包会影响实际时延。排队模型在后续 P1-M2 深入展开。</p>
+<p>参考：<a href="https://gaia.cs.umass.edu/kurose_ross/videos/1/">Kurose–Ross 第 1 章作者教学资源</a>。</p>
 <h3>Python 文件</h3>
 <pre><code># 00_1.3.1_Packet_Switching
 
