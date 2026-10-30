@@ -30,8 +30,8 @@ Content: 03_1.4.4_Throughput_in_Computer_Networks
 </li>
 <li><p><strong>平均吞吐量（Average Throughput）</strong>：</p>
 <ul>
-<li><strong>定义</strong>：如果文件大小为F比特，主机B接收所有F比特所需的时间为T秒，则文件传输的平均吞吐量为F/T比特/秒。</li>
-<li><strong>应用</strong>：对于一些应用，例如互联网电话，期望低延迟和瞬时吞吐量始终高于某个阈值（例如，某些互联网电话应用需要超过24 kbps，而某些实时视频应用需要超过256 kbps）。对于其他涉及文件传输的应用，延迟不是关键，但期望有尽可能高的吞吐量。</li>
+<li><strong>定义</strong>：如果文件大小为F比特，若 F 是成功交付的应用数据比特数，T 为观测时间，则 F/T 是平均<strong>有效吞吐量（goodput）</strong>。若 F 统计链路上传输的全部比特（包括头部及重传），得到的则是另一个层次的速率。必须明确统计口径。</li>
+<li><strong>应用</strong>：对于一些应用，例如互联网电话，期望低延迟和瞬时吞吐量始终高于某个阈值（例如，某些互联网电话应用需要超过24 kbps，而某些实时视频应用需要超过256 kbps）。大文件传输通常看重稳定吞吐量，但连接建立、RTT、发送窗口和拥塞控制也可能影响完成时间，不能认为时延完全不重要。</li>
 </ul>
 </li>
 </ol>
@@ -40,27 +40,43 @@ Content: 03_1.4.4_Throughput_in_Computer_Networks
 <li><p><strong>例子1：单一文件传输</strong>：</p>
 <ul>
 <li><strong>描述</strong>：如图1.19(a)所示，两个终端系统（服务器和客户端）通过两个通信链路和一个路由器连接。考虑从服务器到客户端的文件传输吞吐量。</li>
-<li><strong>分析</strong>：假设网络中唯一发送的比特是从服务器到客户端的比特，服务器通过速率为<span class="math">\(R_s\)</span>的链路连接到路由器，路由器通过速率为<span class="math">\(R_c\)</span>的链路连接到客户端。服务器到客户端的吞吐量为$ \min(R_s, R_c) $。</li>
+<li><strong>分析</strong>：假设网络中唯一发送的比特是从服务器到客户端的比特，服务器通过速率为<span class="math">\(R_s\)</span>的链路连接到路由器，路由器通过速率为<span class="math">\(R_c\)</span>的链路连接到客户端。当路径上只有该传输、持续有数据可发送、忽略额外协议开销且无其他瓶颈时，路径<strong>吞吐能力上界</strong>为 <span class="math">\(\min(R_s,R_c)\)</span>；不表示应用层 goodput 必然达到这个速率。</li>
 </ul>
 </li>
 <li><p><strong>例子2：多文件同时下载</strong>：</p>
 <ul>
 <li><strong>描述</strong>：如图1.20(b)所示，有10个服务器和10个客户端连接到计算机网络的核心部分，同时进行10个下载。这10个下载是网络中唯一的流量。</li>
-<li><strong>分析</strong>：假设所有服务器访问链路的速率为<span class="math">\(R_s\)</span>，所有客户端访问链路的速率为<span class="math">\(R_c\)</span>，核心部分的所有链路速率都远高于<span class="math">\(R_s\)</span>和<span class="math">\(R_c\)</span>，除了一个共享的速率为<span class="math">\(R\)</span>的链路。此时，下载的吞吐量受共享链路的限制，为每个下载提供500 kbps的吞吐量。</li>
+<li><strong>分析</strong>：假设所有服务器访问链路的速率为<span class="math">\(R_s\)</span>，所有客户端访问链路的速率为<span class="math">\(R_c\)</span>，核心部分的所有链路速率都远高于<span class="math">\(R_s\)</span>和<span class="math">\(R_c\)</span>，除了一个共享的速率为<span class="math">\(R\)</span>的链路。必须额外说明：共享链路速率 <span class="math">\(R=5\ \mathrm{Mbps}\)</span>，十条长期活跃的流<strong>公平等份分配</strong>该链路，各自源和目的接入速率不低于 500 kbps，且忽略其他瓶颈及协议开销。此理想模型才得到每条流 <span class="math">\(R/10=500\ \mathrm{kbps}\)</span>；原段落没有给出 R，因此不能直接得出具体值。</li>
 </ul>
 </li>
 </ol>
 <h4>吞吐量的瓶颈分析</h4>
 <ul>
-<li><p><strong>瓶颈链路</strong>：在图1.19和图1.20(a)的例子中，当没有其他干扰流量时，吞吐量可以近似为服务器到客户端路径中最小的传输速率。然而，当存在多个数据流时，共享链路的高传输速率可能成为文件传输的瓶颈。</p>
+<li><p><strong>瓶颈链路</strong>：在图1.19和图1.20(a)的例子中，当没有其他干扰流量时，吞吐量可以近似为服务器到客户端路径中最小的传输速率。然而，存在多个活跃数据流时，需要将共享链路容量与并发流数量及其调度/公平性一同考虑，不能只看共享链路的标称速率。</p>
 </li>
 <li><p><strong>瓶颈转移</strong>：在图1.20(b)的例子中，假设共享链路的速率远高于服务器和客户端的访问链路速率，则每个下载的吞吐量为$ \min(R_s, R_c) $。然而，如果共享链路的速率与访问链路速率相同，则共享链路成为瓶颈，每个下载的吞吐量减少到共享链路的速率除以下载数。</p>
 </li>
 </ul>
 <h4>吞吐量与网络结构的关系</h4>
-<p>现代互联网的核心部分通常过度配置了高速链路，经验上很少出现拥塞。因此，访问网络通常成为影响吞吐量的限制因素。通过优化网络结构和合理分配资源，可以提高整体吞吐量，满足不同应用的需求。</p>
+<p>网络拥塞的位置随链路容量、业务负载、运营商互联和路径变化。核心网络和互联网互联点也可能发生拥塞；接入链路只是可能的瓶颈之一，不能推广为通用定律。通过优化网络结构和合理分配资源，可以提高整体吞吐量，满足不同应用的需求。</p>
 <h4>小结</h4>
 <p>吞吐量是计算机网络性能的关键指标之一。理解吞吐量的定义、计算方法以及影响因素，对于优化网络性能和提升用户体验具有重要意义。通过实际案例分析，可以直观理解吞吐量的变化及其瓶颈所在，从而更好地设计和管理网络资源。</p>
+<h4>勘误与实验：公平共享的条件、吞吐量与 goodput</h4>
+<p>在一个<strong>理想等份公平共享模型</strong>中，源端接入速率为 Rs，接收端接入速率为 Rc，共享链路容量为 R，同时有 n 条长期活跃、始终有数据待发送的流：</p>
+<div class="math">$$
+T_{\mathrm{per\ flow}}\leq\min\left(R_s,R_c,\frac{R}{n}\right)
+$$</div>
+<p>这个式子表达在假设成立时的单流<strong>容量上界</strong>，不是所有真实网络都能达到的吞吐量保证。</p>
+<ul>
+<li>R = 5 Mbps、n = 10、两端接入速率均为 10 Mbps：模型中每条流可获得 <strong>500 kbps</strong> 的共享容量上界。</li>
+<li>若源端仅能发送 300 kbps，则该流上界变为 <strong>300 kbps</strong>。</li>
+<li>如果在 2 秒内成功交付应用有效载荷 1,000,000 bit，则平均应用 goodput 为 <strong>500 kbps</strong>，不包括额外链路字节。</li>
+</ul>
+<pre><code class="language-bash">python examples/network_performance.py share --source 10000000 --destination 10000000 --shared 5000000 --flows 10
+</code></pre>
+<p>输出 500000 bits/s；此程序不模拟拥塞控制、协议开销或多个不均衡流之间的实际公平分配。</p>
+<p><strong>检查题</strong>：如果平均到达负载不高，是否仍可能出现较高瞬时排队时延？可以，突发输入可以积压在短时间内发生。</p>
+<p>参考：Kurose–Ross 第 1 章 1.4 节的基础吞吐量模型；<a href="https://www.rfc-editor.org/rfc/rfc7567">RFC 7567</a> 关于队列与性能之间的关系。</p>
 <h3>Python 文件</h3>
 <pre><code># 03_1.4.4_Throughput_in_Computer_Networks
 
