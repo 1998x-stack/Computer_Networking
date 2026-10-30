@@ -1,23 +1,20 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.5.2 Encapsulation</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-  
-  <title>1.5.2 Encapsulation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
   <link rel="stylesheet" href="../../markdown.css">
-  
   <script defer src="../../markdown.js"></script>
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>01_1.5.2_Encapsulation</h1>
-<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+<h1>01_1.5.2_Encapsulation</h1>
+<pre><code class="language-text">Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
 Content: 01_1.5.2_Encapsulation
 </code></pre>
 <h3>01_1.5.2_Encapsulation</h3>
@@ -26,16 +23,14 @@ Content: 01_1.5.2_Encapsulation
 <h4>封装过程</h4>
 <p>在数据从源主机传输到目标主机的过程中，数据会经过多个层次的封装。具体来说，封装过程如下：</p>
 <ol>
-<li>
-<p><strong>应用层（Application Layer）</strong>：</p>
+<li><p><strong>应用层（Application Layer）</strong>：</p>
 <ul>
 <li>数据生成：应用层生成原始数据，称为应用层报文（Application Message）。</li>
 <li>封装：应用层将报文传递给传输层。</li>
 <li>示例：一个电子邮件或一个网页请求就是应用层生成的报文。</li>
 </ul>
 </li>
-<li>
-<p><strong>传输层（Transport Layer）</strong>：</p>
+<li><p><strong>传输层（Transport Layer）</strong>：</p>
 <ul>
 <li>添加头部信息：传输层在应用层报文的前面加上传输层头部（Transport Layer Header），形成传输层报文段（Transport Layer Segment）。</li>
 <li>功能：头部信息包括发送方和接收方端口号、错误检测码等，用于确保数据正确传输到目标应用程序。</li>
@@ -43,8 +38,7 @@ Content: 01_1.5.2_Encapsulation
 <li>示例：TCP或UDP报文段。</li>
 </ul>
 </li>
-<li>
-<p><strong>网络层（Network Layer）</strong>：</p>
+<li><p><strong>网络层（Network Layer）</strong>：</p>
 <ul>
 <li>添加头部信息：网络层在传输层报文段的前面加上网络层头部（Network Layer Header），形成网络层数据报（Network Layer Datagram）。</li>
 <li>功能：头部信息包括源IP地址、目标IP地址等，用于确定数据报的路由路径。</li>
@@ -52,8 +46,7 @@ Content: 01_1.5.2_Encapsulation
 <li>示例：IP数据报。</li>
 </ul>
 </li>
-<li>
-<p><strong>链路层（Link Layer）</strong>：</p>
+<li><p><strong>链路层（Link Layer）</strong>：</p>
 <ul>
 <li>添加头部信息：链路层在网络层数据报的前面加上链路层头部（Link Layer Header），形成链路层帧（Link Layer Frame）。</li>
 <li>功能：头部信息包括源和目标的MAC地址、错误检测码等，用于确保数据帧在链路上的传输。</li>
@@ -61,8 +54,7 @@ Content: 01_1.5.2_Encapsulation
 <li>示例：以太网帧。</li>
 </ul>
 </li>
-<li>
-<p><strong>物理层（Physical Layer）</strong>：</p>
+<li><p><strong>物理层（Physical Layer）</strong>：</p>
 <ul>
 <li>数据传输：物理层负责将链路层帧转换为电信号或光信号，通过物理介质（如光纤、电缆等）传输。</li>
 <li>示例：比特流。</li>
@@ -90,17 +82,15 @@ Content: 01_1.5.2_Encapsulation
 </ol>
 <h4>小结</h4>
 <p>封装是计算机网络中不可或缺的一部分，通过在数据包上逐层添加头部信息，确保数据能够正确、完整地传输到目标位置。理解封装过程对于深入掌握网络通信原理和提高网络设计能力具有重要意义。</p>
+<h3>Python 文件</h3>
+<pre><code># 01_1.5.2_Encapsulation
 
-    <h3>Python 文件</h3>
-    <pre><code># 01_1.5.2_Encapsulation
-
-"""
+&quot;&quot;&quot;
 Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
 Content: 01_1.5.2_Encapsulation
-"""
+&quot;&quot;&quot;
 
 </code></pre>
   </div>
 </body>
 </html>
-  

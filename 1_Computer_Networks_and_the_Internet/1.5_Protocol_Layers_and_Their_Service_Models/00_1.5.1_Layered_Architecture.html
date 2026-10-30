@@ -1,23 +1,20 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.5.1 Layered Architecture</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-  
-  <title>1.5.1 Layered Architecture</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
   <link rel="stylesheet" href="../../markdown.css">
-  
   <script defer src="../../markdown.js"></script>
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>00_1.5.1_Layered_Architecture</h1>
-<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
+<h1>00_1.5.1_Layered_Architecture</h1>
+<pre><code class="language-text">Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
 Content: 00_1.5.1_Layered_Architecture
 </code></pre>
 <h3>00_1.5.1_Layered_Architecture</h3>
@@ -28,36 +25,31 @@ Content: 00_1.5.1_Layered_Architecture
 <p>在计算机网络中，协议和硬件、软件都被组织成不同的层次，每个协议属于其中的一层。每一层协议为上层提供服务，同时使用下层提供的服务。例如，传输层可以提供从网络一端到另一端的可靠消息传递服务，这可能通过使用网络层的不可靠消息传递服务，并添加检测和重传丢失消息的功能来实现。</p>
 <h4>网络协议的分层</h4>
 <ol>
-<li>
-<p><strong>应用层</strong>：</p>
+<li><p><strong>应用层</strong>：</p>
 <ul>
 <li><strong>功能</strong>：应用层是网络应用及其协议所在的层次，如HTTP、SMTP、FTP等。</li>
 <li><strong>实现</strong>：几乎总是在终端系统中以软件方式实现。例如，Web浏览器和Web服务器之间的通信就是通过HTTP协议实现的。</li>
 </ul>
 </li>
-<li>
-<p><strong>传输层</strong>：</p>
+<li><p><strong>传输层</strong>：</p>
 <ul>
 <li><strong>功能</strong>：传输层负责在应用程序之间传递数据，提供端到端的通信服务。常见协议包括TCP和UDP。</li>
 <li><strong>实现</strong>：传输层协议一般也在终端系统中以软件实现。</li>
 </ul>
 </li>
-<li>
-<p><strong>网络层</strong>：</p>
+<li><p><strong>网络层</strong>：</p>
 <ul>
 <li><strong>功能</strong>：网络层负责将数据包从源节点传递到目标节点，常见协议是IP。</li>
 <li><strong>实现</strong>：网络层通常是硬件和软件的混合实现，路由器在这一层起关键作用。</li>
 </ul>
 </li>
-<li>
-<p><strong>数据链路层</strong>：</p>
+<li><p><strong>数据链路层</strong>：</p>
 <ul>
 <li><strong>功能</strong>：数据链路层负责在同一网络段内传输数据帧，提供节点到节点的传输服务。常见协议包括以太网协议。</li>
 <li><strong>实现</strong>：这一层通常在网络接口卡（如以太网卡或WiFi卡）中实现。</li>
 </ul>
 </li>
-<li>
-<p><strong>物理层</strong>：</p>
+<li><p><strong>物理层</strong>：</p>
 <ul>
 <li><strong>功能</strong>：物理层负责在物理介质上传输比特，提供最底层的通信功能。</li>
 <li><strong>实现</strong>：通常在硬件中实现，如光纤、电缆等。</li>
@@ -78,17 +70,15 @@ Content: 00_1.5.1_Layered_Architecture
 </ol>
 <h4>小结</h4>
 <p>分层架构为复杂系统的设计和实现提供了一种有效的方法，通过将系统功能模块化，每层提供独立的服务并使用下层提供的服务，可以大大简化系统的设计、实现和维护。理解分层架构的基本原理及其在计算机网络中的应用，对于深入掌握网络技术至关重要。</p>
+<h3>Python 文件</h3>
+<pre><code># 00_1.5.1_Layered_Architecture
 
-    <h3>Python 文件</h3>
-    <pre><code># 00_1.5.1_Layered_Architecture
-
-"""
+&quot;&quot;&quot;
 Lecture: 1_Computer_Networks_and_the_Internet/1.5_Protocol_Layers_and_Their_Service_Models
 Content: 00_1.5.1_Layered_Architecture
-"""
+&quot;&quot;&quot;
 
 </code></pre>
   </div>
 </body>
 </html>
-  

@@ -1,23 +1,20 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.2 Physical Media</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-  
-  <title>1.2.2 Physical Media</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap">
   <link rel="stylesheet" href="../../markdown.css">
-  
   <script defer src="../../markdown.js"></script>
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>01_1.2.2_Physical_Media</h1>
-<pre><code>Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
+<h1>01_1.2.2_Physical_Media</h1>
+<pre><code class="language-text">Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
 Content: 01_1.2.2_Physical_Media
 </code></pre>
 <h3>01_1.2.2_Physical_Media</h3>
@@ -27,23 +24,20 @@ Content: 01_1.2.2_Physical_Media
 <p>物理介质分为两大类：导向介质和非导向介质。导向介质中的波沿着固体介质传播，例如光纤电缆、双绞铜线或同轴电缆；非导向介质中的波在大气和外太空传播，例如无线局域网或数字卫星信道。</p>
 <h4>导向介质</h4>
 <ol>
-<li>
-<p><strong>双绞铜线（Twisted-Pair Copper Wire）</strong>：</p>
+<li><p><strong>双绞铜线（Twisted-Pair Copper Wire）</strong>：</p>
 <ul>
 <li><strong>简介</strong>：双绞铜线是一种廉价且最常用的导向传输介质，已有一百多年的历史，主要用于电话网络。</li>
 <li><strong>结构</strong>：双绞铜线由两根绝缘铜线组成，每根铜线约1毫米厚，按规律螺旋排列，扭在一起以减少相邻线对的电干扰。</li>
 <li><strong>应用</strong>：无屏蔽双绞线（UTP）常用于建筑内部的计算机网络，即局域网（LAN）。LAN使用双绞线的数据速率范围从10 Mbps到10 Gbps。</li>
 </ul>
 </li>
-<li>
-<p><strong>同轴电缆（Coaxial Cable）</strong>：</p>
+<li><p><strong>同轴电缆（Coaxial Cable）</strong>：</p>
 <ul>
 <li><strong>简介</strong>：同轴电缆由两根同心铜导体组成，具有特殊的绝缘和屏蔽，可以实现高数据传输速率。</li>
 <li><strong>应用</strong>：同轴电缆广泛应用于有线电视系统，并与电缆调制解调器结合，提供住宅用户数十Mbps的互联网接入。</li>
 </ul>
 </li>
-<li>
-<p><strong>光纤（Fiber Optics）</strong>：</p>
+<li><p><strong>光纤（Fiber Optics）</strong>：</p>
 <ul>
 <li><strong>简介</strong>：光纤是一种细长的柔性介质，通过传导光脉冲来传输数据，每个脉冲代表一个比特。</li>
 <li><strong>优势</strong>：光纤支持极高的比特率（可达数十Gbps甚至数百Gbps），抗电磁干扰，信号衰减低（可达100公里），且难以窃听。</li>
@@ -53,15 +47,13 @@ Content: 01_1.2.2_Physical_Media
 </ol>
 <h4>非导向介质</h4>
 <ol>
-<li>
-<p><strong>地面无线电信道（Terrestrial Radio Channels）</strong>：</p>
+<li><p><strong>地面无线电信道（Terrestrial Radio Channels）</strong>：</p>
 <ul>
 <li><strong>简介</strong>：无线电信道在电磁波谱中传输信号，无需安装物理线缆，可以穿透墙壁，提供移动用户连接，并能传输长距离信号。</li>
 <li><strong>分类</strong>：地面无线电信道大致分为三类：短距离（如无线耳机、键盘）、局部区域（如无线局域网技术）、广域（如蜂窝接入技术）。</li>
 </ul>
 </li>
-<li>
-<p><strong>卫星无线电信道（Satellite Radio Channels）</strong>：</p>
+<li><p><strong>卫星无线电信道（Satellite Radio Channels）</strong>：</p>
 <ul>
 <li><strong>简介</strong>：通信卫星连接地面上的微波发送/接收站，接收一个频段的信号，使用中继器再生信号，并在另一个频段上发射信号。</li>
 <li><strong>分类</strong>：卫星分为地球同步卫星和低地球轨道（LEO）卫星。地球同步卫星固定在地球上空的同一位置，轨道高度为36000公里，信号传播延迟约为280毫秒。</li>
@@ -73,17 +65,15 @@ Content: 01_1.2.2_Physical_Media
 <p>物理链路的实际成本（如铜线、光纤电缆等）通常相对较低，而与安装相关的人工成本则可能高出几个数量级。为了节省未来重新铺设电缆的成本，许多建筑在每个房间安装了双绞线、光纤和同轴电缆，即使初期只使用其中一种介质。</p>
 <h4>小结</h4>
 <p>物理介质在计算机网络中扮演着至关重要的角色，它们决定了数据传输的速率和距离。理解不同类型的物理介质及其应用场景，对于构建和优化计算机网络具有重要意义。本章详细介绍了各种导向和非导向介质的特点、结构及其应用，为深入理解计算机网络的物理层奠定了基础。</p>
+<h3>Python 文件</h3>
+<pre><code># 01_1.2.2_Physical_Media
 
-    <h3>Python 文件</h3>
-    <pre><code># 01_1.2.2_Physical_Media
-
-"""
+&quot;&quot;&quot;
 Lecture: 1_Computer_Networks_and_the_Internet/1.2_The_Network_Edge
 Content: 01_1.2.2_Physical_Media
-"""
+&quot;&quot;&quot;
 
 </code></pre>
   </div>
 </body>
 </html>
-  
