@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         finished = true;
         const note = input.value.trim();
         if (save && note) {
-          const comment = document.createElement('div');
+          const comment = document.createElement('span');
           comment.className = 'comment';
           comment.textContent = note;
           element.appendChild(comment);
@@ -110,7 +110,7 @@ function saveContent() {
     'th,td{border:1px solid #bbb;padding:.4rem .65rem}',
     'img{max-width:100%;height:auto}',
     'blockquote{margin-left:0;padding-left:1rem;border-left:3px solid #888}',
-    '.comment{padding:.4rem .75rem;border-left:3px solid #5c829d;background:#eef3f7;margin:.4rem 0}',
+    '.comment{display:block;padding:.4rem .75rem;border-left:3px solid #5c829d;background:#eef3f7;margin:.4rem 0}',
     '</style></head><body>',
     copy.outerHTML,
     '</body></html>'
