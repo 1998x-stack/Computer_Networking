@@ -78,7 +78,7 @@ P0-M1 无损生成
 
 ## 6. 模块交付门槛
 
-P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 进入独立分支实施；待审核后继续 P0-M3。
+P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 已由 PR #2 合并至 main；P0-M3 在新的独立分支实施。
 
 
 ## 7. P0-M2 交付记录（2026-10-30）
@@ -90,3 +90,15 @@ P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 进入独立�
 - 详细说明：docs/modules/P0-M2-html-security.md。
 - 第三方教材 PDF 的再分发授权状态：PENDING，尚未核实；原文件保持不变，不能以本仓库 MIT 许可替代第三方授权。
 - 交付状态：实现与 CI 已通过；PR 人工审核及版权授权确认仍待完成。P0-M3 只在本模块审查后启动。
+
+
+## 8. P0-M3 交付记录（2026-10-30）
+
+- 分支：feat/p0-m3-deterministic-docs。
+- 从 212 份章节 Markdown、README.md 及对应 Python 骨架构建 214 个 HTML 页面；完成全量重新生成。
+- 固定 Markdown 渲染器版本，实现 --write 与只读 --check；缺失链接、非法脚本主机和不一致的产物导致检查失败。
+- 通过 GitHub Actions 验证首次构建和已有的 P0-M1/P0-M2 回归要求。
+- 持续检查：.github/workflows/docs.yml；实现：scripts/build_docs.py。
+- 详细说明：docs/modules/P0-M3-docs-build.md。
+- 尚未完成：PR 人工审核、浏览器视觉测试、完全离线资源打包、第三方 PDF 许可确认。
+- 下一阶段：P1-M1 互联网体系结构知识勘误。
