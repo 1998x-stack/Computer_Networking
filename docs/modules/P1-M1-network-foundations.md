@@ -64,7 +64,7 @@ python -m unittest tests.test_network_foundations -v
 - [x] 8 篇 1.1–1.3 原文完成定点校订与新增补充
 - [x] 可运行的存储转发、TDM、RFC1918 与最长前缀匹配离线案例已提交
 - [x] 新增针对模型边界、错误输入及 CLI 的单元测试
-- [ ] P0-M3 的 Markdown → HTML 构建器同步生成 8 个章节页并通过 CI
+- [x] P0-M3 的 Markdown → HTML 构建器同步生成 8 个章节页，并通过完整单元测试和一致性检查（GitHub Actions）
 - [ ] PR 人工审查、浏览器公式渲染抽查与合并
 - [ ] 1.4 性能内容及其他章节的系统性勘误（后续模块）
 
