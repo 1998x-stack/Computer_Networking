@@ -1,0 +1,37 @@
+name: One-time P0-M2 HTML migration
+
+on:
+  push:
+    branches:
+      - fix/p0-m2-static-html-security
+    paths:
+      - ".github/workflows/p0-m2-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Migrate all existing HTML pages
+        run: |
+          python scripts/migrate_html_security.py
+          python scripts/migrate_html_security.py --check
+          changed=$(git diff --name-only -- '*.html' | wc -l)
+          echo "Changed HTML pages: $changed"
+          test "$changed" -eq 213
+      - name: Commit migration back to feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u -- '*.html'
+          git commit -m "fix(html): remove unsafe polyfill on 213 static pages"
+          git push origin HEAD:fix/p0-m2-static-html-security
