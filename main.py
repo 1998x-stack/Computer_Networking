@@ -335,115 +335,43 @@ structure = {
 
 
 
-import os
-from typing import Dict, Any
+from argparse import ArgumentParser
+from pathlib import Path
 
-def create_directories_and_files(
-        base_path: str, 
-        structure: Dict[str, Any], 
-        readme_file, 
-        parent_path: str = "", 
-        level: int = 1
-    ):
-    heading = "#" * level
+from scripts.scaffold import scaffold
 
-    for key, value in structure.items():
-        current_path = os.path.join(base_path, key.replace(" ", "_").replace("/", "_").replace("-", "_"))
 
-        # 创建目录
-        os.makedirs(current_path, exist_ok=True)
+def main(argv: list[str] | None = None) -> int:
+    """Safely create missing chapter files without rewriting existing notes."""
+    parser = ArgumentParser(description="Non-destructive networking chapter scaffold")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path(__file__).resolve().parent,
+        help="Output root (default: directory containing main.py)",
+    )
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--dry-run", action="store_true", help="Preview missing files")
+    modes.add_argument(
+        "--check", action="store_true", help="Exit 1 if scaffold files are missing"
+    )
+    args = parser.parse_args(argv)
 
-        # 在README中添加章节标题
-        if parent_path:
-            readme_file.write(f"{heading} {parent_path}/{key}\n\n")
-        else:
-            readme_file.write(f"{heading} {key}\n\n")
+    result = scaffold(
+        args.root, structure, dry_run=args.dry_run, check=args.check
+    )
+    print(
+        f"Created: {len(result.created)}; "
+        f"preserved: {len(result.preserved)}; "
+        f"missing: {len(result.missing)}"
+    )
+    if args.dry_run or args.check:
+        for path in result.missing[:15]:
+            print(f"  MISSING {path.as_posix()}")
+        if len(result.missing) > 15:
+            print(f"  ... plus {len(result.missing) - 15} more")
+    return 1 if args.check and result.missing else 0
 
-        # 递归调用创建子目录和文件
-        if isinstance(value, dict) and value:
-            create_directories_and_files(
-                current_path, 
-                value, 
-                readme_file, 
-                parent_path + "/" + key if parent_path else key, 
-                level + 1
-            )
-        elif isinstance(value, list) and value:
-            for idx, item in enumerate(value):
-                if isinstance(item, dict) and item:
-                    create_directories_and_files(
-                        current_path, 
-                        item, 
-                        readme_file, 
-                        parent_path + "/" + key if parent_path else key, 
-                        level + 1
-                    )
-                else:
-                    item = f"{idx:02d}_{item}"
-                    file_name = item.replace(" ", "_").replace("/", "_").replace("-", "_") + ".py"
-                    file_path = os.path.join(current_path, file_name)
-                    with open(file_path, 'w', encoding='utf-8') as file:
-                        file.write(f"# {item}\n\n")
-                        file.write(f'"""\nLecture: {parent_path}/{key}\nContent: {item}\n"""\n\n')
-
-                    # 在README中添加文件链接
-                    item_clean = item.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    parent_clean = parent_path.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    key_clean = key.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    readme_file.write(f"- [{item}](./{parent_clean}/{key_clean}/{item_clean}.py)\n")
-                    
-                    
-                    file_name = item.replace(" ", "_").replace("/", "_").replace("-", "_") + ".md"
-                    file_path = os.path.join(current_path, file_name)
-                    with open(file_path, 'w', encoding='utf-8') as file:
-                        file.write(f"# {item}\n\n")
-                        file.write(f'"""\nLecture: {parent_path}/{key}\nContent: {item}\n"""\n\n')
-
-                    # 在README中添加文件链接
-                    item_clean = item.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    parent_clean = parent_path.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    key_clean = key.replace(" ", "_").replace("/", "_").replace("-", "_")
-                    readme_file.write(f"- [{item}](./{parent_clean}/{key_clean}/{item_clean}.md)\n")
-        else:
-            # 创建文件并写入初始内容
-            file_name = key.replace(" ", "_").replace("/", "_").replace("-", "_") + ".py"
-            file_path = os.path.join(current_path, file_name)
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(f"# {key}\n\n")
-                file.write(f'"""\nLecture: {parent_path}/{key}\nContent: {key}\n"""\n\n')
-
-            # 在README中添加文件链接
-            parent_clean = parent_path.replace(" ", "_").replace("/", "_").replace("-", "_")
-            key_clean = key.replace(" ", "_").replace("/", "_").replace("-", "_")
-            readme_file.write(f"- [{key}](./{parent_clean}/{key_clean}/{file_name})\n")
-            
-            
-            file_name = key.replace(" ", "_").replace("/", "_").replace("-", "_") + ".md"
-            file_path = os.path.join(current_path, file_name)
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(f"# {key}\n\n")
-                file.write(f'"""\nLecture: {parent_path}/{key}\nContent: {key}\n"""\n\n')
-
-            # 在README中添加文件链接
-            parent_clean = parent_path.replace(" ", "_").replace("/", "_").replace("-", "_")
-            key_clean = key.replace(" ", "_").replace("/", "_").replace("-", "_")
-            readme_file.write(f"- [{key}](./{parent_clean}/{key_clean}/{file_name})\n")
-
-        # 添加空行以分隔不同的章节
-        readme_file.write("\n")
-
-def main():
-    root_dir = './'
-    # 创建根目录
-    os.makedirs(root_dir, exist_ok=True)
-
-    # 创建 README.md 文件
-    with open(os.path.join(root_dir, "README.md"), 'w', encoding='utf-8') as readme_file:
-        readme_file.write("# Computer Network\n\n")
-        readme_file.write("这是一个关于Computer Network的目录结构。\n\n")
-        create_directories_and_files(root_dir, structure, readme_file)
-
-    print("目录和文件结构已生成，并创建 README.md 文件。")
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
