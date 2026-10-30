@@ -111,5 +111,5 @@ P0-M1 已由 PR #1 合并到 main，自动化测试通过。P0-M2 已由 PR #2 �
 - 1.1–1.3 合计 8 个条目逐篇校订；修正 IP 地址、控制平面与转发平面、协议职责、技术代际、存储转发模型与 ISP 互联的表述。
 - 新增 examples/network_foundations.py 和 tests/test_network_foundations.py，提供无网络副作用的离线案例。
 - 模块追踪及权威参考：docs/modules/P1-M1-network-foundations.md。
-- 待完成：同步再生 HTML 并取得 CI 验证；PR 审核与合并。
+- 自动验收：8 个对应 HTML 已完成再生成；P0-M3 全站 --check、P0-M2 安全检查与 Python 回归测试已通过。仍待 PR 人工审核及合并。
 - 后续 P1-M2：第 1 章 1.4 时延、排队、丢包与吞吐量。
